@@ -1,9 +1,78 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100..900&display=swap');
+@font-face {
+    font-family: 'Apple SD Gothic Neo';
+    src: url('../assets/fonts/AppleSDGothicNeo/AppleSDGothicNeoB.ttf') format('truetype');
+    font-weight: bold;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Apple SD Gothic Neo';
+    src: url('../assets/fonts/AppleSDGothicNeo/AppleSDGothicNeoEB.ttf') format('truetype');
+    font-weight: 800;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Apple SD Gothic Neo';
+    src: url('../assets/fonts/AppleSDGothicNeo/AppleSDGothicNeoH.ttf') format('truetype');
+    font-weight: 700;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Apple SD Gothic Neo';
+    src: url('../assets/fonts/AppleSDGothicNeo/AppleSDGothicNeoL.ttf') format('truetype');
+    font-weight: 300;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Apple SD Gothic Neo';
+    src: url('../assets/fonts/AppleSDGothicNeo/AppleSDGothicNeoM.ttf') format('truetype');
+    font-weight: 500;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Apple SD Gothic Neo';
+    src: url('../assets/fonts/AppleSDGothicNeo/AppleSDGothicNeoR.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Apple SD Gothic Neo';
+    src: url('../assets/fonts/AppleSDGothicNeo/AppleSDGothicNeoSB.ttf') format('truetype');
+    font-weight: 600;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Apple SD Gothic Neo';
+    src: url('../assets/fonts/AppleSDGothicNeo/AppleSDGothicNeoT.ttf') format('truetype');
+    font-weight: 900;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Apple SD Gothic Neo';
+    src: url('../assets/fonts/AppleSDGothicNeo/AppleSDGothicNeoUL.ttf') format('truetype');
+    font-weight: 200;
+    font-style: normal;
+}
+
+
+
+
+:root {
+    --bs-body-font-family: 'Apple SD Gothic Neo', 'Noto Sans KR' sans-serif;
+}
 
 
 body {
-    font-family: 'Noto Sans KR', sans-serif;
+    font-family: 'Apple SD Gothic Neo', 'Noto Sans KR', sans-serif;
 }
 
 .rank-icon {
@@ -111,9 +180,8 @@ body {
 }
 
 .submit{
-    background-color: #213A968a; /* bg-blue-500에 해당하는 배경색 */
+    background-color: rgba(17, 17, 17, 0.8);
     color: #ffffff; /* 텍스트 색상을 흰색으로 지정 */
-    font-weight: bold; /* 폰트를 볼드체로 지정 */
     padding: 0.5rem 1rem; /* 버튼의 내부 여백을 설정 */
     border-radius: 0.25rem; /* 버튼의 모서리를 둥글게 설정 */
     border: none; /* 테두리 제거 */
@@ -168,9 +236,13 @@ body {
     background-color: #828b9569;
 
 }
+
+.player_list input:hover {
+    background-color: #696f7538; !important;
+}
+
 .calc{
-    background-color: #34d3998a; 
-    /* background-color: #34d399; /* 배경색 */
+    background-color: rgba(52, 211, 153, 1);
     color: #ffffff; /* 텍스트 색상 */
     font-weight: bold; /* 폰트 두께 */
     padding: 0.5rem 1rem; /* 내부 여백 */
@@ -221,7 +293,7 @@ body {
   }
 
   .reset{
-    background-color: #213A968a; /* bg-blue-500에 해당하는 배경색 */
+    background-color: rgba(17, 17, 17, 0.8);
     color: #ffffff; /* 텍스트 색상을 흰색으로 지정 */
     font-weight: bold; /* 폰트를 볼드체로 지정 */
     padding: 0.5rem 1rem; /* 버튼의 내부 여백을 설정 */
@@ -237,6 +309,12 @@ body {
 .reset:active{
     outline: none; /* 포커스시 아웃라인 제거 */
     box-shadow: 0 0 0 3px rgba(66, 153, 225, 0.5); /* 포커스시 그림자 효과 */
+}
+
+button {
+    font-weight: 700;
+    font-family: 'Apple SD Gothic Neo', 'Noto Sans KR', sans-serif;
+    font-size: .825rem;
 }
 
 .tier_radio{

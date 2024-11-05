@@ -92,13 +92,26 @@
       .bd-mode-toggle .dropdown-menu .active .bi {
         display: block !important;
       }
+
+      .video-background {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        z-index: -1;
+      }
     </style>
 
     
     <!-- Custom styles for this template -->
     <link href="css/cover.css" rel="stylesheet">
   </head>
-  <body class="d-flex h-100 text-center text-bg-dark">
+  <body class="d-flex h-100 text-center">
+    <video class="video-background" autoplay muted loop>
+      <source src="https://cmsassets.rgpub.io/sanity/files/dsfx7636/news/8ab3e227121c53aacab0c9b9f7a48adbc65db520.webm" type="video/webm">
+    </video>
     <svg xmlns="http://www.w3.org/2000/svg" class="d-none">
       <symbol id="check2" viewBox="0 0 16 16">
         <path d="M13.854 3.646a.5.5 0 0 1 0 .708l-7 7a.5.5 0 0 1-.708 0l-3.5-3.5a.5.5 0 1 1 .708-.708L6.5 10.293l6.646-6.647a.5.5 0 0 1 .708 0z"/>
@@ -156,9 +169,9 @@
     <div>
       <h3 class="float-md-start mb-0">Tactic Hub</h3>
       <nav class="nav nav-masthead justify-content-center float-md-end">
-        <a class="nav-link fw-bold py-1 px-0 active" aria-current="page" href="#">홈</a>
-        <a class="nav-link fw-bold py-1 px-0" href="#">팀 매칭</a>
-        <a class="nav-link fw-bold py-1 px-0" href="#">메뉴뭐하지</a>
+        <a class="nav-link py-1 px-0 active" aria-current="page" href="#">홈</a>
+        <a class="nav-link py-1 px-0" href="#">팀 매칭</a>
+        <a class="nav-link py-1 px-0" href="#">메뉴뭐하지</a>
       </nav>
     </div>
   </header>
@@ -171,12 +184,12 @@
     </h1>
     <p class="lead">플레이어의 실력을 반영한 매칭 시스템으로 모두가 즐거운 게임을 경험하세요.</p>
     <p class="lead">
-      <a href="#" class="btn btn-lg btn-light fw-bold border-white bg-white match-btn">팀 매칭하기</a>
+      <a href="" class="btn btn-lg btn-light fw-bold border-white bg-white match-btn">팀 매칭하기</a>
     </p>
   </main>
 
   <footer class="mt-auto text-white-50">
-    <p>Cover template for <a href="https://getbootstrap.com/" class="text-white">Bootstrap</a>, by <a href="https://twitter.com/mdo" class="text-white">@mdo</a>.</p>
+    <p>본 페이지는 백엔드 실습 프로젝트입니다</a>. <a href="https://github.com/sim00507/tactic-hub/" class="text-white">@5조</a></p>
   </footer>
 </div>
 <script src="assets/dist/js/bootstrap.bundle.min.js"></script>

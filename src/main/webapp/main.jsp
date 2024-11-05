@@ -1,3 +1,4 @@
+<%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -5,11 +6,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>TacticHub</title>
   <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/main.css">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100..900&display=swap" rel="stylesheet">
+
 
   <style>
 
@@ -24,16 +22,17 @@
 <div class="main-wrap">
   <div class="container">
     <div class="title">
-      <h1>TacticHub</h1>
-      <p>Streamline your team coordination with TacticHub, revolutionizing your League of Legends in-house experience!</p>
+      <h1>사용자 설정 게임 팀 매칭</h1>
+      <p>플레이어의 이름과 랭크를 선택해주세요. <span style="font-weight: bold">TacticHub</span>가 각 팀의 평균 실력을 균등하게 맞춰줍니다.<br>
+        5v5 커스텀 게임을 위한 최적의 팀을 간편하게 만들어보세요!</p>
     </div>
 
     <div class="input_container">
-      <label for="player">Player</label>
-      <input type="text" id="player" name="player" placeholder="Enter player name">
+      <label for="player">플레이어</label>
+      <input type="text" id="player" name="player" placeholder="닉네임을 입력하세요.">
     </div>
     <div class="rank_container">
-      <label>Rank</label>
+      <label>랭크</label>
       <div class="rank_icon">
         <button class="button"  data-rank="Iron" data-value="0"><img src="images/tiers/iron.png" alt="iron" class="rank-icon"></button>
         <button class="button"  data-rank="Bronze" data-value="4"><img src="images/tiers/bronze.png" alt="Bronze" class="rank-icon"></button>
@@ -68,35 +67,35 @@
     </div>
     <br>
     <button class="submit" type="button">
-      Submit
+      확인
     </button>
     <!-- 플레이어 이름 초기화 버튼 -->
     <button class="reset" type="button">
-      Reset
+      초기화
     </button>
     <div class="rst_container">
       <div class="wrap">
         <div class="player_list">
-          <input type="text" placeholder="player1">
-          <input type="text" placeholder="player2">
-          <input type="text" placeholder="player3">
-          <input type="text" placeholder="player4">
-          <input type="text" placeholder="player5">
+          <input type="text" placeholder="플레이어1">
+          <input type="text" placeholder="플레이어2">
+          <input type="text" placeholder="플레이어3">
+          <input type="text" placeholder="플레이어4">
+          <input type="text" placeholder="플레이어5">
         </div>
       </div>
       <div class="wrap">
         <div class="player_list">
-          <input type="text" placeholder="player6">
-          <input type="text" placeholder="player7">
-          <input type="text" placeholder="player8">
-          <input type="text" placeholder="player9">
-          <input type="text" placeholder="player10">
+          <input type="text" placeholder="플레이어6">
+          <input type="text" placeholder="플레이어7">
+          <input type="text" placeholder="플레이어8">
+          <input type="text" placeholder="플레이어9">
+          <input type="text" placeholder="플레이어10">
         </div>
       </div>
     </div>
 
     <button class="calc" type="button" onClick="">
-      Calc
+      팀 구성하기
     </button>
   </div>
 </div>
