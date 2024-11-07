@@ -108,7 +108,7 @@
     <!-- Custom styles for this template -->
     <link href="css/cover.css" rel="stylesheet">
   </head>
-  <body class="d-flex h-100 text-center">
+  <body class="h-100 text-center d-flex flex-column justify-content-center align-items-center">
     <video class="video-background" autoplay muted loop>
       <source src="https://cmsassets.rgpub.io/sanity/files/dsfx7636/news/8ab3e227121c53aacab0c9b9f7a48adbc65db520.webm" type="video/webm">
     </video>
@@ -162,21 +162,46 @@
         </li>
       </ul>
     </div>
+<!--
+    <header class="bg-black w-100">
+      <div class="d-flex justify-content-between align-items-center">
+        <h3 class="mb-0 ">Tactic Hub</h3>
+        <nav class="nav nav-masthead justify-content-center">
+          <a class="nav-link py-1 px-0 active" aria-current="page" href="#">홈</a>
+          <a class="nav-link py-1 px-0" href="main.jsp">팀 매칭</a>
+          <a class="nav-link py-1 px-0" href="#">메뉴뭐하지</a>
+        </nav>
+      </div>
+    </header>
+-->
+    <div class="header-container w-100 bg-transparent" style="background-color: rgba(0, 0, 0, 0.8); backdrop-filter: blur(5px)">
+      <div class="container">
+        <header class="d-flex flex-wrap align-items-center justify-content-center justify-content-md-between py-1 pt-3">
+          <div class="col-md-3 mb-2 mb-md-0">
+            <a href="/" class="d-inline-flex link-body-emphasis text-decoration-none">
+              <img src="images/GitHub_Logo_White.png" alt="logo" width="97" height="40">
+            </a>
+          </div>
 
-    
-<div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column">
-  <header class="mb-auto">
-    <div>
-      <h3 class="float-md-start mb-0">Tactic Hub</h3>
-      <nav class="nav nav-masthead justify-content-center float-md-end">
-        <a class="nav-link py-1 px-0 active" aria-current="page" href="#">홈</a>
-        <a class="nav-link py-1 px-0" href="#">팀 매칭</a>
-        <a class="nav-link py-1 px-0" href="#">메뉴뭐하지</a>
-      </nav>
-    </div>
-  </header>
+        <ul class="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0">
+          <li><a href="." class="nav-link px-2 link-light active">홈</a></li>
+          <li><a href="main.jsp" class="nav-link px-2 link-light">팀 매칭</a></li>
+          <li><a href="#" class="nav-link px-2 link-light">메뉴뭐하지</a></li>
+          <!--
+          <li><a href="#" class="nav-link px-2">FAQs</a></li>
+          <li><a href="#" class="nav-link px-2">About</a></li>
+          -->
+        </ul>
 
-  <main class="px-3">
+        <div class="col-md-3 text-end">
+          <button type="button" class="navbtn btn me-2 btn-outline-light text-white">로그인</button>
+          <button type="button" class="navbtn btn text-white btn-outline-light">회원가입</button>
+        </div>
+      </header>
+      </div></div>
+  <div class="cover-container d-flex w-100 h-100 p-3 mx-auto mt-auto flex-column justify-content-center align-items-center">
+
+  <main class="px-3 mt-auto">
     <h1>
       사용자 설정 게임에서 팀 매칭을 더 손쉽게,
       <br>
@@ -184,7 +209,7 @@
     </h1>
     <p class="lead">플레이어의 실력을 반영한 매칭 시스템으로 모두가 즐거운 게임을 경험하세요.</p>
     <p class="lead">
-      <a href="" class="btn btn-lg btn-light fw-bold border-white bg-white match-btn">팀 매칭하기</a>
+      <a href="main.jsp" class="btn btn-lg btn-light fw-bold border-white bg-white match-btn">팀 매칭하기</a>
     </p>
   </main>
 
