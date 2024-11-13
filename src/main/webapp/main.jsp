@@ -16,7 +16,7 @@
 <body class="bg">
 <div class="nav">
   <a href="./">HOME</a>
-  <a href="./about.html">ABOUT</a>
+  <a href="./riotApi.jsp">ABOUT</a>
   <a href="./contact.html">CONTACT</a>
 </div>
 <div class="main-wrap">
