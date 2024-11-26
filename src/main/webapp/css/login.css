@@ -2,10 +2,81 @@ html,
 body {
     height: 100%;
 }
+@font-face {
+    font-family: 'Apple SD Gothic Neo';
+    src: url('../assets/fonts/AppleSDGothicNeo/AppleSDGothicNeoB.ttf') format('truetype');
+    font-weight: bold;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Apple SD Gothic Neo';
+    src: url('../assets/fonts/AppleSDGothicNeo/AppleSDGothicNeoEB.ttf') format('truetype');
+    font-weight: 800;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Apple SD Gothic Neo';
+    src: url('../assets/fonts/AppleSDGothicNeo/AppleSDGothicNeoH.ttf') format('truetype');
+    font-weight: 700;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Apple SD Gothic Neo';
+    src: url('../assets/fonts/AppleSDGothicNeo/AppleSDGothicNeoL.ttf') format('truetype');
+    font-weight: 300;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Apple SD Gothic Neo';
+    src: url('../assets/fonts/AppleSDGothicNeo/AppleSDGothicNeoM.ttf') format('truetype');
+    font-weight: 500;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Apple SD Gothic Neo';
+    src: url('../assets/fonts/AppleSDGothicNeo/AppleSDGothicNeoR.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Apple SD Gothic Neo';
+    src: url('../assets/fonts/AppleSDGothicNeo/AppleSDGothicNeoSB.ttf') format('truetype');
+    font-weight: 600;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Apple SD Gothic Neo';
+    src: url('../assets/fonts/AppleSDGothicNeo/AppleSDGothicNeoT.ttf') format('truetype');
+    font-weight: 900;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Apple SD Gothic Neo';
+    src: url('../assets/fonts/AppleSDGothicNeo/AppleSDGothicNeoUL.ttf') format('truetype');
+    font-weight: 200;
+    font-style: normal;
+}
+
+:root {
+    --bs-body-font-family: 'Apple SD Gothic Neo', 'Noto Sans KR' sans-serif;
+}
 
 .form-signin {
-    max-width: 330px;
-    padding: 1rem;
+    max-width: 500px;
+    max-height: 600px;
+    padding: 4rem;
+    background-color: rgba(255,255,255,0.2);
+    border-radius: 10px;
+    backdrop-filter: blur(40px);
+    -webkit-backdrop-filter: blur(40px);
 }
 
 .form-signin .form-floating:focus-within {
@@ -22,4 +93,9 @@ body {
     margin-bottom: 10px;
     border-top-left-radius: 0;
     border-top-right-radius: 0;
+}
+
+.lg-title{
+    font-size: 18px;
+    line-height: 24px;
 }

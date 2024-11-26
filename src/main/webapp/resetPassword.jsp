@@ -161,7 +161,7 @@
 </div>
 
 
-<main class="form-signin w-100 m-auto" style="max-height: 800px">
+<main class="form-signin w-100 m-auto">
     <form class="text-center" style="max-width: 500px; width: 100%">
         <a href="index.jsp"><img class="mb-2" src="./images/TacticHub-Logo.png" alt="" width="200" height="40"></a>
 
@@ -169,74 +169,27 @@
             <!-- 구분선 -->
             <div class="border-bottom mb-4" style="border-color: rgba(255,255,255,0.5) !important;"></div>
 
-            <p class="lg-title fw-bold" style="font-size: 18px" style="margin-bottom: 0; !important;">회원가입</p>
+            <p class="lg-title fw-bold" style="font-size: 18px" style="margin-bottom: 0; !important;">비밀번호 초기화</p>
 
             <!-- 제목 -->
             <div class="text-center mb-2">
-                <span class="fw-medium" style="font-size: 14px">TacticHub에 오신 것을 환영합니다.</span>
+                <span class="fw-medium" style="font-size: 14px">비밀번호 초기화 이메일 발송</span>
             </div>
 
             <!-- 입력 폼 -->
             <div class="mb-3">
                 <div class="form-floating mb-2">
                     <input id="email-address" type="email" class="form-control" placeholder="Email address" required>
-                    <label for="email-address">이메일<span style="font-size: 12px; color: gray">(example@example.com)</span></label>
-                </div>
-                <div class="form-floating" style="--bs-border-radius: 0">
-                    <input id="password" type="password" class="form-control" placeholder="Password" required style="height: 0">
-                    <label for="password">비밀번호<span style="font-size: 12px; color: gray">(영문, 숫자, 특수문자 조합 8~20자리)</span></label>
-                </div>
-                <div class="form-floating" style="--bs-border-radius: 0">
-                    <input id="password-confirm" type="password" class="form-control" placeholder="Password Confirm" required style="height: 0">
-                    <label for="password">비밀번호 확인<span style="font-size: 12px; color: gray">(영문, 숫자, 특수문자 조합 8~20자리)</span></label>
-                </div>
-                <div class="form-floating">
-                    <input id="summoner" type="text" class="form-control" placeholder="Summoner" required style="height: 0; border-top-left-radius: 0; border-top-right-radius: 0">
-                    <label for="password">소환사 이름<span style="font-size: 12px; color: gray">(플레이어 이름#태그)</span></label>
+                    <label for="email-address">이메일</label>
                 </div>
             </div>
-            <div class="mb-3 text-start" style="font-size: 14px">
-                <!-- 만 14세 이상입니다 -->
-                <div class="form-check mb-2">
-                    <input class="form-check-input" type="checkbox" value="" id="age-confirm" required>
-                    <label class="form-check-label text-start" for="age-confirm">
-                        만 14세 이상입니다. <span style="color: gray;">(필수)</span><br>
-                        <small>만 14세 미만 아동의 계정생성은 부모님 혹은 보호자의 승인이 필요합니다.</small>
-                    </label>
-                </div>
-
-                <!-- 이용약관 -->
-                <div class="form-check mb-2">
-                    <input class="form-check-input" type="checkbox" value="" id="terms-accept" required>
-                    <label class="form-check-label text-start" for="terms-accept">
-                        <a href="#" class="text-primary text-decoration-none">이용약관</a>에 동의합니다. <span style="color: gray;">(필수)</span>
-                    </label>
-                </div>
-
-                <!-- 개인정보 수집 및 이용 -->
-                <div class="form-check mb-2">
-                    <input class="form-check-input" type="checkbox" value="" id="privacy-policy" required>
-                    <label class="form-check-label text-start" for="privacy-policy">
-                        <a href="#" class="text-primary text-decoration-none">개인정보 수집 및 이용</a>에 동의합니다. <span style="color: gray;">(필수)</span>
-                    </label>
-                </div>
-
-                <!-- 마케팅 정보 수신 -->
-                <div class="form-check">
-                    <input class="form-check-input" type="checkbox" value="" id="marketing-consent">
-                    <label class="form-check-label text-start" for="marketing-consent">
-                        서비스 홍보 및 마케팅 목적인 <a href="#" class="text-primary text-decoration-none">개인정보 수집 및 이용</a>에 동의합니다. <span style="color: gray;">(선택)</span>
-                    </label>
-                </div>
-            </div>
-
 
             <!-- 버튼 -->
             <button type="submit" class="btn btn-dark w-100 py-2 mb-3 fw-bold mt-4">
-                <!-- <svg class="bi bi-lock-fill me-2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor" width="16" height="16">
-                     <path d="M8 1a4 4 0 0 1 4 4v3H4V5a4 4 0 0 1 4-4zM3 9V5a5 5 0 1 1 10 0v4h.5A1.5 1.5 0 0 1 15 10.5v4A1.5 1.5 0 0 1 13.5 16h-11A1.5 1.5 0 0 1 1 14.5v-4A1.5 1.5 0 0 1 2.5 9H3zm10 1H3v4h10v-4z"></path>
-                 </svg> -->
-                회원가입
+               <!-- <svg class="bi bi-lock-fill me-2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor" width="16" height="16">
+                    <path d="M8 1a4 4 0 0 1 4 4v3H4V5a4 4 0 0 1 4-4zM3 9V5a5 5 0 1 1 10 0v4h.5A1.5 1.5 0 0 1 15 10.5v4A1.5 1.5 0 0 1 13.5 16h-11A1.5 1.5 0 0 1 1 14.5v-4A1.5 1.5 0 0 1 2.5 9H3zm10 1H3v4h10v-4z"></path>
+                </svg> -->
+                비밀번호 초기화
             </button>
 
         </div>

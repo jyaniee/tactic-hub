@@ -15,7 +15,7 @@
     <meta name="description" content="">
     <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
     <meta name="generator" content="Hugo 0.122.0">
-    <title>Signin Template · Bootstrap v5.3</title>
+    <title>TacticHub | 로그인</title>
 
     <link rel="canonical" href="https://getbootstrap.com/docs/5.3/examples/sign-in/">
 
@@ -104,11 +104,11 @@
         }
     </style>
 
-
     <!-- Custom styles for this template -->
     <link href="sign-in.css" rel="stylesheet">
 </head>
-<body class="d-flex align-items-center py-4 bg-body-tertiary">
+<body class="d-flex align-items-center py-4 bg-body-tertiary" style="background-image: url('./images/katarina-lgbg.jpg');
+ background-repeat : no-repeat; background-position: center top; background-size: 100% 100%; ">
 <svg xmlns="http://www.w3.org/2000/svg" class="d-none">
     <symbol id="check2" viewBox="0 0 16 16">
         <path d="M13.854 3.646a.5.5 0 0 1 0 .708l-7 7a.5.5 0 0 1-.708 0l-3.5-3.5a.5.5 0 1 1 .708-.708L6.5 10.293l6.646-6.647a.5.5 0 0 1 .708 0z"/>
@@ -162,27 +162,47 @@
 
 
 <main class="form-signin w-100 m-auto">
-    <form>
-        <img class="mb-4" src="../assets/brand/bootstrap-logo.svg" alt="" width="72" height="57">
-        <h1 class="h3 mb-3 fw-normal">Please sign in</h1>
+    <form class="text-center" style="max-width: 500px; width: 100%">
+        <a href="index.jsp"><img class="mb-2" src="./images/TacticHub-Logo.png" alt="" width="200" height="40"></a>
+       <!-- <p class="lg-title fw-bold" style="font-size: 18px" style="margin-bottom: 0; !important;">로그인</p>
+        -->
+        <div class="container py-4 px-3 rounded" style="max-width: 480px; background-color: transparent">
+            <!-- 구분선 -->
+            <div class="border-bottom mb-4" style="border-color: rgba(255,255,255,0.5) !important;"></div>
 
-        <div class="form-floating">
-            <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com">
-            <label for="floatingInput">Email address</label>
-        </div>
-        <div class="form-floating">
-            <input type="password" class="form-control" id="floatingPassword" placeholder="Password">
-            <label for="floatingPassword">Password</label>
+            <!-- 제목 -->
+            <div class="text-center mb-2">
+                <span class="fw-medium" style="font-size: 14px">이메일 로그인</span>
+            </div>
+
+            <!-- 입력 폼 -->
+            <div class="mb-3">
+                <div class="form-floating mb-2">
+                    <input id="email-address" type="email" class="form-control" placeholder="Email address" required>
+                    <label for="email-address">이메일</label>
+                </div>
+                <div class="form-floating">
+                    <input id="password" type="password" class="form-control" placeholder="Password" required style="height: 0">
+                    <label for="password">비밀번호</label>
+                </div>
+            </div>
+
+            <!-- 버튼 -->
+            <button type="submit" class="btn btn-dark w-100 py-2 mb-3 fw-bold mt-4">
+                <svg class="bi bi-lock-fill me-2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor" width="16" height="16">
+                    <path d="M8 1a4 4 0 0 1 4 4v3H4V5a4 4 0 0 1 4-4zM3 9V5a5 5 0 1 1 10 0v4h.5A1.5 1.5 0 0 1 15 10.5v4A1.5 1.5 0 0 1 13.5 16h-11A1.5 1.5 0 0 1 1 14.5v-4A1.5 1.5 0 0 1 2.5 9H3zm10 1H3v4h10v-4z"></path>
+                </svg>
+                로그인
+            </button>
+
+            <!-- 하단 링크 -->
+            <div class="d-flex justify-content-between fw-medium" style="font-size: 14px;">
+                <a href="resetPassword.jsp" class="text-decoration-none text-white ps-4">비밀번호 찾기</a>
+                <p class="font-medium text-white">|</p>
+                <a href="signup.jsp" class="text-decoration-none text-white pe-4">이메일 회원가입</a>
+            </div>
         </div>
 
-        <div class="form-check text-start my-3">
-            <input class="form-check-input" type="checkbox" value="remember-me" id="flexCheckDefault">
-            <label class="form-check-label" for="flexCheckDefault">
-                Remember me
-            </label>
-        </div>
-        <button class="btn btn-primary w-100 py-2" type="submit">Sign in</button>
-        <p class="mt-5 mb-3 text-body-secondary">&copy; 2017–2024</p>
     </form>
 </main>
 <script src="../assets/dist/js/bootstrap.bundle.min.js"></script>

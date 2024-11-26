@@ -179,7 +179,7 @@
         <header class="d-flex flex-wrap align-items-center justify-content-center justify-content-md-between py-1 pt-3">
           <div class="col-md-3 mb-2 mb-md-0">
             <a href="/" class="d-inline-flex link-body-emphasis text-decoration-none">
-              <img src="images/GitHub_Logo_White.png" alt="logo" width="97" height="40">
+              <img src="images/TacticHub-Logo.png" alt="logo" width="120" height="24">
             </a>
           </div>
 
@@ -195,7 +195,7 @@
 
         <div class="col-md-3 text-end">
           <a href="login.jsp" type="button" class="navbtn btn me-2 btn-outline-light text-white">로그인</a>
-          <a type="button" class="navbtn btn text-white btn-outline-light">회원가입</a>
+          <a href="signup.jsp" type="button" class="navbtn btn text-white btn-outline-light">회원가입</a>
         </div>
       </header>
       </div></div>
