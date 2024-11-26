@@ -178,7 +178,7 @@
       <div class="container">
         <header class="d-flex flex-wrap align-items-center justify-content-center justify-content-md-between py-1 pt-3">
           <div class="col-md-3 mb-2 mb-md-0">
-            <a href="/" class="d-inline-flex link-body-emphasis text-decoration-none">
+            <a href="index.jsp" class="d-inline-flex link-body-emphasis text-decoration-none">
               <img src="images/TacticHub-Logo.png" alt="logo" width="120" height="24">
             </a>
           </div>
@@ -214,7 +214,7 @@
   </main>
 
   <footer class="mt-auto text-white-50">
-    <p>본 페이지는 백엔드 실습 프로젝트입니다</a>. <a href="https://github.com/sim00507/tactic-hub/" class="text-white">@5조</a></p>
+    <p>본 페이지는 백엔드 실습 프로젝트입니다</p>. <a href="https://github.com/sim00507/tactic-hub/" class="text-white">@5조</a></p>
   </footer>
 </div>
 <script src="assets/dist/js/bootstrap.bundle.min.js"></script>
