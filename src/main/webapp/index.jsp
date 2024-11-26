@@ -212,9 +212,8 @@
       <a href="main.jsp" class="btn btn-lg btn-light fw-bold border-white bg-white match-btn">팀 매칭하기</a>
     </p>
   </main>
-
   <footer class="mt-auto text-white-50">
-    <p>본 페이지는 백엔드 실습 프로젝트입니다</p>. <a href="https://github.com/sim00507/tactic-hub/" class="text-white">@5조</a></p>
+    <a>본 페이지는 백엔드 실습 프로젝트입니다</a>.<a href="https://github.com/sim00507/tactic-hub/" class="text-white">@5조</a></a>
   </footer>
 </div>
 <script src="assets/dist/js/bootstrap.bundle.min.js"></script>

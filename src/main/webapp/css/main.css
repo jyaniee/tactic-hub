@@ -1,5 +1,9 @@
+/*
+ * Globals
+ */
 
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100..900&display=swap');
+
 @font-face {
     font-family: 'Apple SD Gothic Neo';
     src: url('../assets/fonts/AppleSDGothicNeo/AppleSDGothicNeoB.ttf') format('truetype');
@@ -63,382 +67,180 @@
     font-style: normal;
 }
 
-
-
-
 :root {
-    --bs-body-font-family: 'Apple SD Gothic Neo', 'Noto Sans KR' sans-serif;
+    --bs-body-font-family: 'Apple SD Gothic Neo', 'Noto Sans KR', sans-serif;
 }
 
+/*
+ * Base structure
+ */
 
 body {
-    font-family: 'Apple SD Gothic Neo', 'Noto Sans KR', sans-serif;
-}
-
-.rank-icon {
-    width: 30px;
-    height: 30px;
-}
-
-#dia{
-    width: 35px;
-    height: 35px;
-}
-
-.main-wrap{
-    min-height: 900px;
-}
-.container {
-    max-width: 1200px;
-    margin: auto;
-    padding: 24px; /* 6px * 4 = 24px */
-    background: linear-gradient(0deg,#1f2331 30%,rgba(0,0,0,.3) 100%); /* 투명배경 */
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    border-radius: 12px; /* 50% of the shadow's 24px spread */
-    margin-top: 80px; /* 10px * 4 = 40px */
-
-}
-
-.title h1{
-    font-size: 1.5rem; /* text-2xl에 해당하는 크기 */
-    font-weight: bold; /* bold에 해당하는 폰트 두께 */
-    margin-bottom: 0.5rem; /* mb-2에 해당하는 마진 */
-    color: white;
-}
-
-.title p{
-    margin-bottom: 1.5rem; 
-    color: white;
-}
-
-.bg{
-    background-color: #f5f5f5; /* bg-gray-100에 해당하는 배경색 */
-    background-image:url("../images/1159914.jpg");
+    font-family: var(--bs-body-font-family);
+    text-shadow: 0 .05rem .1rem rgba(0, 0, 0, .5);
+    box-shadow: inset 0 0 5rem rgba(0, 0, 0, .5);
+    background-color: #111111;
+    background-image: url('../images/1159914.jpg');
     background-size: cover;
-    background-position: center 20%;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    padding-top: 70px; /* 헤더 높이 */
 }
 
-.bg:after{
-    content: ""; /* 가상 요소의 콘텐츠 없음 */
-    position: absolute; /* 가상 요소를 배경 이미지 위에 겹쳐지도록 설정 */
-    top: 700px;
-    width: 100%; /* 가로 너비 100% */
-    height: 230px; /* 세로 높이 100% */
-    background: linear-gradient(transparent, hsl(212, 100%, 4%) 30%); /* 선형 그라데이션 배경 설정 */
-    margin-top:100px;
-
+.cover-container {
+    max-width: 42em;
 }
 
-.input_container{
-    margin-bottom: 1rem;
-
+h1 {
+    font-weight: 800;
+    font-size: 2.25rem;
 }
 
-.input_container label{
-    display: block;
-    color: #729BFF; /* text-gray-700에 해당하는 색상 */
-    font-size: 0.875rem; /* text-sm에 해당하는 글꼴 크기 */
-    font-weight: bold; /* font-bold에 해당하는 폰트 두께 */
-    margin-bottom: 0.5rem; /* mb-2에 해당하는 마진 */
-    padding-left: 0;
-    margin-left: 0;
+.lead {
+    font-size: 1rem;
 }
-.input_container input{
-    box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05); /* shadow에 해당하는 그림자 효과 */
-    /* border: 1px solid #e2e8f0; /* border에 해당하는 테두리 스타일 */ 
-    border-radius: 0.25rem; /* rounded에 해당하는 테두리 둥글기 */
-    width: 100%; /* w-full에 해당하는 너비 */
-    padding: 0.5rem 0.75rem; /* py-2 px-3에 해당하는 내부 여백 */
-    color: #ffffff; /* text-gray-700에 해당하는 색상 */
-    font-size: 0.875rem; /* text-sm에 해당하는 글꼴 크기 */
-    line-height: 1.25rem; /* leading-tight에 해당하는 줄 높이 */
-    outline: none; /* focus:outline-none에 해당하는 포커스시 아웃라인 제거 */
+
+.match-btn {
+    font-size: 1rem;
+}
+
+/* 헤더 스타일 */
+.header-container {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+    background-color: rgba(0, 0, 0, 0.8);
+    backdrop-filter: blur(5px);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+}
+
+/* 네비게이션 스타일 */
+.nav-link {
+    color: rgba(255, 255, 255, 0.5);
+    border-bottom: 0.25rem solid transparent;
+    font-weight: 600;
+}
+
+.nav-link:hover,
+.nav-link:focus {
+    color: #fff;
+    border-bottom-color: rgba(255, 255, 255, 1);
+}
+
+.nav-link.active {
+    color: #fff;
+    border-bottom-color: rgba(255, 255, 255, 1);
+}
+
+/* 버튼 스타일 */
+.navbtn {
+    font-size: 0.875rem;
+    color: white;
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    background-color: transparent;
+    transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.navbtn:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+    color: white;
+}
+
+/* 컨텐츠 컨테이너 */
+.content-container {
+    background-color: rgba(1, 1, 1, 0.5);
+    border-radius: 10px;
+    padding: 30px;
+    max-width: 900px;
+    margin: 60px auto;
+    color: white;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    text-align: left;
+}
+
+/* 랭크 및 티어 선택 */
+.rank-icon {
+    display: flex;
+    gap: 0.5rem;
+    justify-content: flex-start;
+}
+
+.rank-icon button {
+    width: 50px; /* 버튼의 너비 조정 */
+    height: 50px; /* 버튼의 높이 조정 */
+    border: none; /* 버튼 테두리 제거 */
+    background: rgba(255, 255, 255, 0.1); /* 버튼 배경 투명 */
+    padding: 5px; /* 내부 여백 */
+    border-radius: 10px; /* 둥근 모서리 추가 */
+    transition: transform 0.2s ease, background-color 0.2s ease;
+}
+
+.rank-icon button img {
+    width: 80%;
+    height: auto; /* 비율 유지 */
+}
+
+.rank-icon button:hover {
+    transform: scale(1.1); /* 호버 시 크기 확대 */
+    background-color: rgba(255, 255, 255, 0.1); /* 호버 시 배경색 */
+}
+
+/* 활성화된 버튼 스타일 */
+.rank-icon button.active {
+    background-color: rgba(255, 255, 255, 0.5); /* 활성화된 버튼의 배경색 */
+    border: 2px solid rgba(255, 255, 255, 0.8); /* 활성화된 버튼의 테두리 */
+    transform: scale(1.1); /* 약간 확대된 상태 */
+}
+
+/* 티어 선택 라디오 버튼 */
+.tier_radio input {
+    margin-right: 0.5rem;
+    transform: scale(1.2); /* 라디오 버튼 크기 약간 확대 */
+}
+
+/* 플레이어 리스트 */
+.player_list input {
+    margin-bottom: 10px;
+    border-radius: 0.25rem;
+    padding: 0.5rem 0.75rem;
     background-color: #828b9569;
+    color: white;
 }
 
-.input_container input:focus{
-    box-shadow: 0 0 0 3px rgba(66, 153, 225, 0.5); /* focus:shadow-outline에 해당하는 포커스시 그림자 효과 */
-}
-.input_container input:hover{
-    background-color: #696f7538;
-}
-
-
-.rank_container label{
-    display: block;
-    color: #729BFF; /* text-gray-700에 해당하는 색상 */
-    font-size: 0.875rem; /* text-sm에 해당하는 글꼴 크기 */
-    font-weight: bold; /* font-bold에 해당하는 폰트 두께 */
-    margin-bottom: 0.5rem; /* mb-2에 해당하는 마진 */
-    margin-left:0;
-    padding-left:0;
+/* Reset 버튼 */
+.reset {
+    background-color: #3b82f6;
+    color: white;
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 0.25rem;
 }
 
-.rank_icon{
-    display: flex;
-    gap: 0.5rem; /* space-x-2에 해당하는 간격 */
+.reset:hover {
+    background-color: #2362c6;
 }
 
-.submit{
-    background-color: rgba(17, 17, 17, 0.8);
-    color: #ffffff; /* 텍스트 색상을 흰색으로 지정 */
-    padding: 0.5rem 1rem; /* 버튼의 내부 여백을 설정 */
-    border-radius: 0.25rem; /* 버튼의 모서리를 둥글게 설정 */
-    border: none; /* 테두리 제거 */
-    cursor: pointer;
-}
+/* 반응형 스타일 */
+@media (max-width: 768px) {
+    .header-container {
+        padding: 10px 20px;
+    }
 
-.submit:hover{
-    background-color: #182a698a;
-}
+    .nav-link {
+        font-size: 0.875rem;
+    }
 
-.submit:active{
-    outline: none; /* 포커스시 아웃라인 제거 */
-    box-shadow: 0 0 0 3px rgba(66, 153, 225, 0.5); /* 포커스시 그림자 효과 */
-}
-
-.rst_container{
-    display: flex;
-    flex-wrap: wrap; /* 요소들을 여러 줄에 걸쳐 배치 */
-    justify-content: space-between; /* 요소들을 동일한 간격으로 배치 */
-    margin-top: 1.5rem; /* mt-6에 해당하는 상단 마진 */
-}
-
-.wrap{
-    width: 100%; /* 모든 화면 크기에서 너비가 100%가 되도록 설정 */
-    margin-bottom: 1rem; 
-}
-
-@media (min-width: 768px) {
-    .wrap {
-        width: 50%; /* 중간 크기 화면(md)에서 너비가 절반(1/2)가 되도록 설정 */
+    .navbtn {
+        font-size: 0.75rem;
     }
 }
-    
-.player_list{
-    display: flex;
-    flex-direction: column; /* 세로 방향으로 아이템을 배치 */
-    gap: 0.5rem; /* space-y-2에 해당하는 간격 */
-    pointer-events: none;
-    padding-left: 0.25rem;
-    padding-right: 0.25rem;
-}
 
-.player_list input{
-    box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05); /* 그림자 효과 */
-   /* border: 1px solid #e2e8f0; /* 테두리 스타일 */
-    border-radius: 0.25rem; /* 둥근 모서리 */
-    padding: 0.5rem 0.75rem; /* 내부 여백 */
-    color: #ffffff; /* 텍스트 색상 */
-    font-size: 0.875rem; /* 글꼴 크기 */
-    line-height: 1.25rem; /* 줄 간격 */
-    outline: none; /* 포커스시 아웃라인 제거 */
-    background-color: #828b9569;
-
-}
-
-.player_list input:hover {
-    background-color: #696f7538; !important;
-}
-
-.calc{
-    background-color: rgba(52, 211, 153, 1);
-    color: #ffffff; /* 텍스트 색상 */
-    font-weight: bold; /* 폰트 두께 */
-    padding: 0.5rem 1rem; /* 내부 여백 */
-    border-radius: 0.25rem; /* 둥근 모서리 */
-    border: none; /* 테두리 제거 */
-    cursor: pointer; /* 커서를 포인터로 변경하여 클릭 가능하게 함 */
-}
-
-.calc:hover{
-    background-color: #22ad758a;
-    /* background-color: #22ad75; */
-}
-
-.calc:active{
-    outline: none; /* 포커스시 아웃라인 제거 */
-    box-shadow: 0 0 0 3px rgba(66, 153, 225, 0.5); /* 포커스시 그림자 효과 */
-}
-/* 정헌 */
-.button {
-    display: inline-block;
-    padding: 10px 20px;
-    /*background-color: rgba(0, 0, 0, 0.03);*/
-    color: #ffffff;
-    text-align: center;
-    text-decoration: none;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    background-color: #828b9569;
-  }
-  
-  /* 이미지 스타일링 */
-  .button img {
-    vertical-align: middle;
-    margin-right: 5px; /* 이미지와 텍스트 사이 여백 조정 */
-    max-width: 100%; /* 이미지 크기 조정 */
-    max-height: 100%; /* 이미지 크기 조정 */
-    opacity: 1;
-  }
-
-  .button:hover {
-    background-color:  #696f7538;
-  }
-
-  .button:focus {
-    box-shadow: 0 0 0 3px rgba(66, 153, 225, 0.5); /* 클릭시 빨간색 외곽선 추가 */
-    outline-offset: 1px; /* 외곽선과 버튼 간격 조정 */
-  }
-
-  .reset{
-    background-color: rgba(17, 17, 17, 0.8);
-    color: #ffffff; /* 텍스트 색상을 흰색으로 지정 */
-    font-weight: bold; /* 폰트를 볼드체로 지정 */
-    padding: 0.5rem 1rem; /* 버튼의 내부 여백을 설정 */
-    border-radius: 0.25rem; /* 버튼의 모서리를 둥글게 설정 */
-    border: none; /* 테두리 제거 */
-    cursor: pointer;
-}
-
-.reset:hover{
-    background-color: #182a698a;
-}
-
-.reset:active{
-    outline: none; /* 포커스시 아웃라인 제거 */
-    box-shadow: 0 0 0 3px rgba(66, 153, 225, 0.5); /* 포커스시 그림자 효과 */
-}
-
-button {
-    font-weight: 700;
-    font-family: 'Apple SD Gothic Neo', 'Noto Sans KR', sans-serif;
-    font-size: .825rem;
-}
-
-.tier_radio{
-    margin-left: 1rem;
-    margin-top: 1rem;
-    color: white;
-    display: inline-flex;
-}
-
-.tier_radio input, label{
-    margin-left: 1rem;
-    margin-right: 1rem;
-}
-
-input[type="radio"]{
-    display: none;
-}
-
-
-
-.custom-radio {
-    display: inline-block;
-    width: 15px;
-    height: 15px;
-    border-radius: 50%; 
-    border: 2px solid #828b9569; 
-    position: relative;
-    cursor: pointer;
-    margin-left: 1rem;
-}
-
-.custom-radio::after {
-    content: "";
-    display: block;
-    width: 15px;
-    height: 15px;
-    background-color: #828b9569;  /* Black inner circle */
-    border-radius: 50%;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    opacity: 0; /* Initially hidden */
-}
-
-/* Show inner circle when radio button is checked */
-input[type="radio"]:checked + .custom-radio::after {
-    opacity: 1;
-}
-
-.nav{
-    background-color: #111111;
-    overflow: hidden;
-    width: 100%;
-    text-align: center;
-}
-
-.nav a{
-    display: inline-block;
-    color: white;
-    text-align: center;
-    padding: 14px 20px;
-    text-decoration: none;
-    font-weight: bold;
-    
-}
-
-.nav a:hover {
-    background-color: #182a69
-    
-}
-
-.footer {
-    background-color: #181C2A; /* 배경색 설정 */
-    color: #fff; /* 텍스트 색상 설정 */
-    padding: 50px; /* 내부 여백 설정 */
-    bottom: 0; /* 하단에 위치 */
-    width: 100%; /* 전체 너비 설정 */
-    height: 120px;
-    text-align: center;
-}
-
-.footer .textbox{
-    font-size: 12px; /* 폰트 크기 설정 */
-    text-align: center; /* 텍스트를 가운데 정렬 */
-    max-width: 800px; /* 최대 너비 설정 */
-    margin: 0px auto; /* 가운데 정렬 */
-    padding-bottom: 30%; /* 내부 패딩 설정 */
-}
-
-.about{
-    z-index: 0;
-    background-color: #000914;
-    height: 1080px;
-    color:white;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-    font-family:"Noto Sans KR", sans-serif;
-    line-height: 30px;
-}
-
-.about hr{
-    margin-top: 300px;
-    margin-bottom: 2rem;
-}
-.about .logic{
-    max-width: 800px;
-    padding-left: 50px;
-    padding-right: 20px;
-}
-
-.about span::before{
-    content:"“";
-    vertical-align:middle;
-    font-size: 50px;
-}
-.about span::after{
-    content:"”";
-    vertical-align: top;
-    font-size: 50px;
-}
-
-.logic .point{
-    text-align: left;
+/* 버튼 스타일 확장 */
+.btn-light,
+.btn-light:hover,
+.btn-light:focus {
+    color: #333;
+    text-shadow: none; /* Prevent inheritance from `body` */
 }
