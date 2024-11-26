@@ -9,6 +9,7 @@
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
   <link rel="stylesheet" href="css/main.css">
   <script src="assets/js/color-modes.js"></script>
+  <script src="js/main.js"></script>
   <script>
       document.addEventListener("DOMContentLoaded", () => {
       const rankButtons = document.querySelectorAll(".rank-icon button");
@@ -19,8 +20,8 @@
       rankButtons.forEach((btn) => btn.classList.remove("active"));
       // 클릭한 버튼에 active 상태 추가
       button.classList.add("active");
-    });
-    });
+        });
+      });
     });
   </script>
   <style>
@@ -52,18 +53,18 @@
 
 <!-- 메인 컨텐츠 -->
 <div class="content-container">
-  <h1 class="mb-4 text-center">사용자 설정 게임 팀 매칭</h1>
-  <p class="text-center">플레이어의 이름과 랭크를 선택해주세요. <strong>TacticHub</strong>가 각 팀의 평균 실력을 균등하게 맞춰줍니다. <br>5v5 커스텀 게임을 위한 최적의 팀을 간편하게 만들어보세요!</p>
+  <h1 class="mb-4 text-start">사용자 설정 게임 팀 매칭</h1>
+  <p class="text-start">플레이어의 이름과 랭크를 선택해주세요. <img src="images/TacticHub-Logo.png" alt="logo" width="80" height="16"> 가 각 팀의 평균 실력을 균등하게 맞춰줍니다. <br>5v5 커스텀 게임을 위한 최적의 팀을 간편하게 만들어보세요!</p>
 
   <!-- 플레이어 입력 -->
   <div class="mb-3">
-    <label for="player" class="form-label">플레이어</label>
+    <label for="player" class="form-label fw-bold">플레이어</label>
     <input type="text" id="player" name="player" class="form-control" placeholder="닉네임을 입력하세요.">
   </div>
 
   <!-- 랭크 선택 -->
   <div class="mb-3">
-    <label class="form-label">랭크</label>
+    <label class="form-label fw-bold">랭크</label>
     <div class="d-flex gap-2 rank-icon">
       <button class="btn btn-outline-secondary p-1" data-rank="iron"><img src="images/tiers/iron.png" alt="Iron"></button>
       <button class="btn btn-outline-secondary p-1" data-rank="bronze"><img src="images/tiers/bronze.png" alt="Bronze"></button>
@@ -85,12 +86,12 @@
 
   <!-- 확인 및 초기화 버튼 -->
   <div class="d-flex gap-3 justify-content-start mb-3">
-    <button class="btn btn-primary">확인</button>
-    <button class="btn btn-secondary reset">초기화</button>
+    <button class="btn fw-bold" id="submit" style=" border-color: rgba(50, 205, 50, 0.5);">확인</button>
+    <button class="btn fw-bold" id="reset" style="border-color: rgba(255, 50, 50, 0.5);">초기화</button>
   </div>
 
   <!-- 플레이어 리스트 -->
-  <div class="row">
+  <div class="row" style="">
     <div class="col-md-6 player_list">
       <input type="text" class="form-control mb-2" placeholder="플레이어 1" readonly>
       <input type="text" class="form-control mb-2" placeholder="플레이어 2" readonly>
@@ -108,8 +109,8 @@
   </div>
 
   <!-- 팀 구성 버튼 -->
-  <div class="d-flex gap-3 justify-content-start mt-3">
-    <button class="btn btn-success">팀 구성</button>
+  <div class="d-flex gap-3 justify-content-center mt-3">
+    <button class="btn fw-bold" id="calc" style="border-color: #adb5bd">팀 구성하기</button>
   </div>
 </div>
 
