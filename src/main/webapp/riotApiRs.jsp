@@ -22,7 +22,7 @@
     if (gameName != null && tagLine != null) {
         try {
             // Riot API 키 설정
-            String apiKey = "RGAPI-4d4ee961-55c2-42ec-9721-df9a741a08d0";
+            String apiKey = "RGAPI-5ad285e9-5261-4450-8df9-0740ce738916";
 
             // 랭크 정보 가져오는 법: ACCOUNT-V1 -> SUMMONER-V4 -> LEAGUE-V4 순으로 3번 요청해야함. 2024-11-13 기준
             // 1. ACCOUNT-V1에선 닉네임과 태그로 puuid를 가져오고,

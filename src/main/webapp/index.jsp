@@ -194,8 +194,8 @@
         </ul>
 
         <div class="col-md-3 text-end">
-          <button type="button" class="navbtn btn me-2 btn-outline-light text-white">로그인</button>
-          <button type="button" class="navbtn btn text-white btn-outline-light">회원가입</button>
+          <a href="login.jsp" type="button" class="navbtn btn me-2 btn-outline-light text-white">로그인</a>
+          <a type="button" class="navbtn btn text-white btn-outline-light">회원가입</a>
         </div>
       </header>
       </div></div>
