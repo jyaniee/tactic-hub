@@ -39,9 +39,9 @@
         </a>
       </div>
       <ul class="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0">
-        <li><a href="." class="nav-link px-2 link-light active">홈</a></li>
-        <li><a href="main.jsp" class="nav-link px-2 link-light">팀 매칭</a></li>
-        <li><a href="#" class="nav-link px-2 link-light">메뉴뭐하지</a></li>
+        <li><a href="." class="nav-link px-2 link-light me-2">홈</a></li>
+        <li><a href="main.jsp" class="nav-link px-2 link-light active me-2">팀 매칭</a></li>
+        <li><a href="#" class="nav-link px-2 link-light me-2">메뉴뭐하지</a></li>
       </ul>
       <div class="col-md-3 text-end">
         <a href="login.jsp" type="button" class="navbtn btn me-2 btn-outline-light text-white">로그인</a>
@@ -53,13 +53,13 @@
 
 <!-- 메인 컨텐츠 -->
 <div class="content-container">
-  <h1 class="mb-4 text-start">사용자 설정 게임 팀 매칭</h1>
-  <p class="text-start">플레이어의 이름과 랭크를 선택해주세요. <img src="images/TacticHub-Logo.png" alt="logo" width="80" height="16"> 가 각 팀의 평균 실력을 균등하게 맞춰줍니다. <br>5v5 커스텀 게임을 위한 최적의 팀을 간편하게 만들어보세요!</p>
+  <h1 class="mb-4 text-start" style="font-size: 28px">사용자 설정 게임 팀 매칭</h1>
+  <p class="text-start">플레이어의 이름과 랭크를 선택해주세요. <img src="images/TacticHub-Logo.png" alt="logo" width="80" height="16" class="mb-1"> 가 각 팀의 평균 실력을 균등하게 맞춰줍니다. <br>5v5 커스텀 게임을 위한 최적의 팀을 간편하게 만들어보세요!</p>
 
   <!-- 플레이어 입력 -->
   <div class="mb-3">
     <label for="player" class="form-label fw-bold">플레이어</label>
-    <input type="text" id="player" name="player" class="form-control" placeholder="닉네임을 입력하세요.">
+    <input type="text" id="player" name="player" class="form-control" placeholder="닉네임을 입력하세요." style="border: none;">
   </div>
 
   <!-- 랭크 선택 -->
@@ -86,25 +86,25 @@
 
   <!-- 확인 및 초기화 버튼 -->
   <div class="d-flex gap-3 justify-content-start mb-3">
-    <button class="btn fw-bold" id="submit" style=" border-color: rgba(50, 205, 50, 0.5);">확인</button>
-    <button class="btn fw-bold" id="reset" style="border-color: rgba(255, 50, 50, 0.5);">초기화</button>
+    <button class="btn fw-bold" id="submit" style="">확인</button>
+    <button class="btn fw-bold" id="reset" style="">초기화</button>
   </div>
 
   <!-- 플레이어 리스트 -->
   <div class="row" style="">
     <div class="col-md-6 player_list">
-      <input type="text" class="form-control mb-2" placeholder="플레이어 1" readonly>
-      <input type="text" class="form-control mb-2" placeholder="플레이어 2" readonly>
-      <input type="text" class="form-control mb-2" placeholder="플레이어 3" readonly>
-      <input type="text" class="form-control mb-2" placeholder="플레이어 4" readonly>
-      <input type="text" class="form-control mb-2" placeholder="플레이어 5" readonly>
+      <input type="text" class="form-control mb-2 rdonly" placeholder="플레이어 1" readonly>
+      <input type="text" class="form-control mb-2 rdonly" placeholder="플레이어 2" readonly>
+      <input type="text" class="form-control mb-2 rdonly" placeholder="플레이어 3" readonly>
+      <input type="text" class="form-control mb-2 rdonly" placeholder="플레이어 4" readonly>
+      <input type="text" class="form-control mb-2 rdonly" placeholder="플레이어 5" readonly>
     </div>
     <div class="col-md-6 player_list">
-      <input type="text" class="form-control mb-2" placeholder="플레이어 6" readonly>
-      <input type="text" class="form-control mb-2" placeholder="플레이어 7" readonly>
-      <input type="text" class="form-control mb-2" placeholder="플레이어 8" readonly>
-      <input type="text" class="form-control mb-2" placeholder="플레이어 9" readonly>
-      <input type="text" class="form-control mb-2" placeholder="플레이어 10" readonly>
+      <input type="text" class="form-control mb-2 rdonly" placeholder="플레이어 6" readonly>
+      <input type="text" class="form-control mb-2 rdonly" placeholder="플레이어 7" readonly>
+      <input type="text" class="form-control mb-2 rdonly" placeholder="플레이어 8" readonly>
+      <input type="text" class="form-control mb-2 rdonly" placeholder="플레이어 9" readonly>
+      <input type="text" class="form-control mb-2 rdonly" placeholder="플레이어 10" readonly>
     </div>
   </div>
 
@@ -115,9 +115,22 @@
 </div>
 
 <!-- 푸터 -->
-<footer class="bg-dark text-white text-center py-3 mt-5">
-  <p>© TacticHub 2024 - All rights reserved.</p>
-</footer>
+<div class="container">
+  <footer class="d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top">
+    <div class="col-md-4 d-flex align-items-center">
+      <a href="/" class="mb-3 me-2 mb-md-0 text-body-secondary text-decoration-none lh-1">
+        <img src="images/TacticHub-Logo.png" width="100" height="20">
+      </a>
+      <span class="mb-3 mb-md-0 text-body-secondary">© 2024 Company, Inc</span>
+    </div>
+
+    <ul class="nav col-md-4 justify-content-end list-unstyled d-flex">
+      <li class="ms-3"><a class="text-body-secondary" href="https://github.com/sim00507/tactic-hub" target="_blank"><img src="images/github-mark-white.png" width="25" height="25"></a></li>
+      <li class="ms-3"><a class="text-body-secondary" href="#"><svg class="bi" width="24" height="24"><use xlink:href="#instagram"></use></svg></a></li>
+      <li class="ms-3"><a class="text-body-secondary" href="#"><svg class="bi" width="24" height="24"><use xlink:href="#facebook"></use></svg></a></li>
+    </ul>
+  </footer>
+</div>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>

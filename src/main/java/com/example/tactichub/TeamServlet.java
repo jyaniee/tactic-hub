@@ -1,6 +1,6 @@
 package com.example.tactichub;
 
-import jakarta.servlet.annotation.WebServlet;
+/* import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
@@ -9,17 +9,14 @@ import java.io.IOException;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import com.google.gson.Gson;
-import com.google.gson.reflect.TypeToken;
-
 
 @WebServlet("/TeamServlet")
 public class TeamServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws IOException {
-        BufferedReader reader = req.getReader();
+       BufferedReader reader = req.getReader();
         String jsonData = reader.readLine();
-        Gson gson = new Gson();
+         Gson gson = new Gson();
 
         List<Map<String, String>> playerData = gson.fromJson(jsonData, new TypeToken<List<Map<String, String>>>() {}.getType());
 
@@ -34,3 +31,4 @@ public class TeamServlet extends HttpServlet {
         resp.getWriter().write(gson.toJson(responseData));
     }
 }
+*/

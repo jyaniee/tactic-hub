@@ -184,9 +184,9 @@
           </div>
 
         <ul class="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0">
-          <li><a href="." class="nav-link px-2 link-light active">홈</a></li>
-          <li><a href="main.jsp" class="nav-link px-2 link-light">팀 매칭</a></li>
-          <li><a href="#" class="nav-link px-2 link-light">메뉴뭐하지</a></li>
+          <li><a href="." class="nav-link px-2 text-white active me-2">홈</a></li>
+          <li><a href="main.jsp" class="nav-link px-2 text-white me-2">팀 매칭</a></li>
+          <li><a href="#" class="nav-link px-2 text-white me-2">메뉴뭐하지</a></li>
           <!--
           <li><a href="#" class="nav-link px-2">FAQs</a></li>
           <li><a href="#" class="nav-link px-2">About</a></li>

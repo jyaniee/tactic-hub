@@ -85,6 +85,7 @@ body {
     background-repeat: no-repeat;
     background-attachment: fixed;
     padding-top: 70px; /* 헤더 높이 */
+    backdrop-filter: blur(0px);
 }
 
 .cover-container {
@@ -112,7 +113,7 @@ h1 {
     z-index: 1000;
     background-color: rgba(0, 0, 0, 0.8);
     backdrop-filter: blur(5px);
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+    /* box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3); */
 }
 
 /* 네비게이션 스타일 */
@@ -149,14 +150,14 @@ h1 {
 
 /* 컨텐츠 컨테이너 */
 .content-container {
-    background-color: rgba(1, 1, 1, 0.8);
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.2), #000914);
     border-radius: 10px;
     padding: 80px;
     max-width: 900px;
     margin: 60px auto;
     color: white;
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
+   backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
     text-align: left;
 }
 
@@ -207,8 +208,14 @@ h1 {
     padding: 0.5rem 0.75rem;
   /*  background-color: black; */
     color: white;
+    border: none;
 }
 
+
+.player_list input:focus {
+    border: none;
+    background-color: rgba(255, 255, 255, 0.5);
+}
 /* Reset 버튼 */
 .reset {
 
@@ -243,19 +250,25 @@ h1 {
 }
 
 #submit {
-    color: rgba(50, 205, 50, 0.5);
+    color: rgb(90, 255, 50, 0.6);
+    border-color: rgba(50, 205, 50, 0.6);
 }
 
 #submit:hover {
     background-color: rgba(40, 170, 40, 0.2);
+    color: rgb(90, 255, 50, 80);
+    border-color: rgba(50, 205, 50, 80);
 }
 
 #reset {
-    color: rgba(255, 50, 50, 0.5);
+    color: rgba(255, 77, 77, 0.6);
+    border-color: rgba(255, 77, 77, 0.6);
 }
 
 #reset:hover {
     background-color: rgba(255, 30, 30, 0.2);
+    color: rgba(255, 77, 77, 80);
+    border-color: rgba(255, 77, 77, 80);
 }
 
 #calc {
@@ -270,4 +283,12 @@ h1 {
 
 .form-control {
     background-color: rgba(255, 255, 255, 0.1);
+}
+
+.form-control:focus {
+    background-color: rgba(255, 255, 255, 0.5);
+}
+
+.rdonly {
+    pointer-events: none;
 }
