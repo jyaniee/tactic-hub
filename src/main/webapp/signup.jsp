@@ -161,15 +161,15 @@
 </div>
 
 
-<main class="form-signin w-100 m-auto" style="max-height: 800px">
+<main class="form-signin w-100 m-auto" style="max-height: 760px">
     <form class="text-center" style="max-width: 500px; width: 100%">
         <a href="index.jsp"><img class="mb-2" src="./images/TacticHub-Logo.png" alt="" width="200" height="40"></a>
 
         <div class="container py-4 px-3 rounded" style="max-width: 480px; background-color: transparent">
             <!-- 구분선 -->
-            <div class="border-bottom mb-4" style="border-color: rgba(255,255,255,0.5) !important;"></div>
+            <div class="border-bottom mb-3" style="border-color: rgba(255,255,255,0.5) !important;"></div>
 
-            <p class="lg-title fw-bold" style="font-size: 18px" style="margin-bottom: 0; !important;">회원가입</p>
+            <p class="lg-title fw-bold mb-1" style="font-size: 18px;">회원가입</p>
 
             <!-- 제목 -->
             <div class="text-center mb-2">
@@ -232,7 +232,7 @@
 
 
             <!-- 버튼 -->
-            <button type="submit" class="btn btn-dark w-100 py-2 mb-3 fw-bold mt-4">
+            <button type="submit" class="btn btn-dark w-100 py-2 mb-3 fw-bold mt-1">
                 <!-- <svg class="bi bi-lock-fill me-2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor" width="16" height="16">
                      <path d="M8 1a4 4 0 0 1 4 4v3H4V5a4 4 0 0 1 4-4zM3 9V5a5 5 0 1 1 10 0v4h.5A1.5 1.5 0 0 1 15 10.5v4A1.5 1.5 0 0 1 13.5 16h-11A1.5 1.5 0 0 1 1 14.5v-4A1.5 1.5 0 0 1 2.5 9H3zm10 1H3v4h10v-4z"></path>
                  </svg> -->
