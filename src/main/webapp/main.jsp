@@ -11,6 +11,7 @@
   <link rel="stylesheet" href="css/main.css">
   <script src="assets/js/color-modes.js"></script>
   <script src="js/main.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
   <script>
       document.addEventListener("DOMContentLoaded", () => {
       const rankButtons = document.querySelectorAll(".rank-icon button");
@@ -111,7 +112,7 @@
 
   <!-- 팀 구성 버튼 -->
   <div class="d-flex gap-3 justify-content-center mt-3">
-    <a href="result.jsp"><button class="btn fw-bold" id="calc" style="border-color: #adb5bd">팀 구성하기</button></a>
+    <a><button class="btn fw-bold" id="calc" style="border-color: #adb5bd">팀 구성하기</button></a>
   </div>
 </div>
 

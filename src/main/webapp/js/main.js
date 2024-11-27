@@ -1,3 +1,6 @@
+// import Swal from 'sweetalert2'
+// const Swal = require('sweetalert2')
+
 document.addEventListener("DOMContentLoaded", function () {
     const submitButton = document.getElementById("submit");
     const resetButton = document.getElementById("reset");
@@ -40,15 +43,21 @@ document.addEventListener("DOMContentLoaded", function () {
             return;
         }
 
+        // html 태그 속성에서 가져옴
         const rank = selectedRank.dataset.rank;
         const tier = selectedTier.value;
-        const rankValue = selectedRank.dataset.value;
-        const tierValue = selectedTier.dataset.value;
+
+        // 미리 선언해둔 rankScores와 tierScores를 이용해서 선언
+      //  const rankValue = selectedRank.dataset.value;
+      //  const tierValue = selectedTier.dataset.value;
+        const rankValue = rankScores[rank]; // rankScores 객체를 이용하여 값 매핑
+        const tierValue = tierScores[tier]; // tierScores 객체를 이용하여 값 매핑
 
         playerInputs[currentPlayerIndex].value = `${playerName} (${rank} ${tier})`;
-        playerData.push({ name: playerName, rank, tier, rankValue, tierValue });
+        playerData.push({name: playerName, rank, tier, rankValue, tierValue});
         currentPlayerIndex++;
 
+        console.log("현재 플레이어 데이터:", playerData);
     });
 
     resetButton.addEventListener("click", function () {
@@ -59,21 +68,33 @@ document.addEventListener("DOMContentLoaded", function () {
 
     calcButton.addEventListener("click", function () {
         if (playerData.length !== 10) {
-            alert("10명의 플레이어를 입력해주세요.");
+           alert("10명의 플레이어를 입력해주세요.");
+           /* Swal.fire({
+                icon: 'error',
+                title: '알림',
+                text: '10명의 플레이어를 입력해주세요.',
+                confirmButtontext: '확인'
+            });*/
             return;
         }
         console.log(playerData);
         // 데이터를 서버로 전송
         fetch("TeamServlet", {
             method: "POST",
-            headers: { "Content-Type": "application/json" },
+            headers: {"Content-Type": "application/json"},
             body: JSON.stringify(playerData),
         })
             .then((response) => response.json())
             .then((result) => {
-                alert("팀 구성이 완료되었습니다!");
+                // 서버에서 받은 결과 처리
+                localStorage.setItem("team1", JSON.stringify(result.team1));
+                localStorage.setItem("team2", JSON.stringify(result.team2));
                 console.log(result);
+                window.location.href = "result.jsp";
             })
-            .catch((error) => console.error("Error:", error));
+            .catch((error) => {
+                    console.error("Error:", error);
+                    alert("팀 구성 중 문제가 발생했습니다.");
+            });
     });
 });
