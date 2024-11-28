@@ -41,44 +41,61 @@
   </div>
 </div>
 
-<!-- 메인 컨텐츠 -->
-<div class="content-container">
-  <h1 class="mb-4 text-start" style="font-size: 28px"><img src="images/check_circle.png" alt="complete" width="50" height="50" style="filter: drop-shadow(1px 1px 1px rgba(0, 0, 0, 0.8));"> 게임을 위한 최적의 팀이 구성되었습니다!</h1>
-  <p class="text-start">편성된 팀을 확인하세요! <br>
-    각 팀의 평균 실력이 균등하도록 <img src="images/TacticHub-Logo.png" alt="logo" width="80" height="16" class="mb-1"> 가 최적의 팀을 구성했습니다.</p>
+<div class="content-container position-relative">
+  <!-- 로딩 애니메이션 -->
+  <div class="loading-animation" id="loading-animation">
+    <div class="circular-loader"></div>
+  </div>
+
+  <!-- 블러 처리 없이 유지될 부분 -->
+  <h1 class="mb-4 text-start" style="font-size: 28px">
+    <img src="images/check_circle.png" alt="complete" width="50" height="50" style="filter: drop-shadow(1px 1px 1px rgba(0, 0, 0, 0.8));">
+    게임을 위한 최적의 팀이 구성되었습니다!
+  </h1>
+  <p class="text-start">
+    편성된 팀을 확인하세요! <br>
+    각 팀의 평균 실력이 균등하도록
+    <img src="images/TacticHub-Logo.png" alt="logo" width="80" height="16" class="mb-1">
+    가 최적의 팀을 구성했습니다.
+  </p>
 
   <hr>
-  <!-- 플레이어 리스트 -->
-  <div class="row mt-4" style="">
+
+  <!-- 플레이어 리스트 (블러 처리될 부분) -->
+  <div class="row mt-4">
     <div class="col-md-6 player_list">
       <div class="team-header d-flex justify-content-center align-items-center mb-3">
         <img src="images/groups.png" alt="Team 1" width="35" height="35" class="me-2">
         <h3 class="text-white mb-0">팀 1</h3>
       </div>
-      <input type="text" class="form-control mb-2 rdonly" placeholder="플레이어 1" readonly>
-      <input type="text" class="form-control mb-2 rdonly" placeholder="플레이어 2" readonly>
-      <input type="text" class="form-control mb-2 rdonly" placeholder="플레이어 3" readonly>
-      <input type="text" class="form-control mb-2 rdonly" placeholder="플레이어 4" readonly>
-      <input type="text" class="form-control mb-2 rdonly" placeholder="플레이어 5" readonly>
+      <div class="blur-container" id="team1-players">
+        <input type="text" class="form-control mb-2 rdonly" readonly>
+        <input type="text" class="form-control mb-2 rdonly" readonly>
+        <input type="text" class="form-control mb-2 rdonly" readonly>
+        <input type="text" class="form-control mb-2 rdonly" readonly>
+        <input type="text" class="form-control mb-2 rdonly" readonly>
+      </div>
     </div>
     <div class="col-md-6 player_list">
       <div class="team-header d-flex justify-content-center align-items-center mb-3">
         <img src="images/groups.png" alt="Team 2" width="35" height="35" class="me-2">
         <h3 class="text-white mb-0">팀 2</h3>
       </div>
-      <input type="text" class="form-control mb-2 rdonly" placeholder="플레이어 6" readonly>
-      <input type="text" class="form-control mb-2 rdonly" placeholder="플레이어 7" readonly>
-      <input type="text" class="form-control mb-2 rdonly" placeholder="플레이어 8" readonly>
-      <input type="text" class="form-control mb-2 rdonly" placeholder="플레이어 9" readonly>
-      <input type="text" class="form-control mb-2 rdonly" placeholder="플레이어 10" readonly>
+      <div class="blur-container" id="team2-players">
+        <input type="text" class="form-control mb-2 rdonly" readonly>
+        <input type="text" class="form-control mb-2 rdonly" readonly>
+        <input type="text" class="form-control mb-2 rdonly" readonly>
+        <input type="text" class="form-control mb-2 rdonly" readonly>
+        <input type="text" class="form-control mb-2 rdonly" readonly>
+      </div>
     </div>
   </div>
-
   <!-- 다시 구성하기 -->
   <div class="d-flex gap-3 justify-content-center mt-5">
     <a href="main.jsp"><button class="btn fw-bold" id="calc" style="border-color: #adb5bd">다시 구성하기</button></a>
   </div>
 </div>
+
 
 <!-- 푸터 -->
 <div class="container">
