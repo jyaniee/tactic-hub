@@ -1,13 +1,14 @@
 <img src="/src/main/webapp/images/TacticHub-Logo.png" width="300">
 
-## TacticHub Web Page v1.0.0
+# TacticHub Web Page v1.0.0
 
 > 동양미래대학교 컴퓨터소프트웨어공학과 기말고사 프로젝트  
 > 개발기간: 2학기 중(2024.11 ~ )
 
 
 
-### 팀
+## 팀
+
 
 [@sim00507](https://github.com/sim00507) | 메인 프론트엔드  
 [@dulgix](https://github.com/dulgix) | 서브 프론트엔드, 서브 백엔드  
@@ -15,14 +16,14 @@
 
 
 
-### 프로젝트 소개
+## 프로젝트 소개
 
 **TacticHub는 5v5 커스텀 게임을 위한 팀 매칭 플랫폼입니다.**
 
 사용자가 입력한 플레이어 정보(이름, 랭크, 티어)를 기반으로, 각 팀의 평균 실력이 균등하도록 최적의 팀을 구성합니다.  
 웹 기반으로 제작되어 직관적이고 깔끔한 UI를 제공합니다.
 
----
+
 
 ## 화면 구성
 
