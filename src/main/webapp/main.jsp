@@ -41,7 +41,7 @@
   <!-- 플레이어 입력 -->
   <div class="mb-3">
     <label for="player" class="form-label fw-bold">플레이어</label>
-    <input type="text" id="player" name="player" class="form-control" placeholder="플레이어 이름#KR1" style="border: none;">
+    <input type="text" id="player" name="player" class="form-control" placeholder="" style="border: none;">
   </div>
 
   <!-- 랭크 선택 -->
