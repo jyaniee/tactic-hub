@@ -5,14 +5,7 @@
 <%@ page import="java.nio.charset.StandardCharsets" %>
 <%@ page import="org.json.JSONArray" %>
 
-<!DOCTYPE html>
-<html lang="ko">
-<head>
-    <meta charset="UTF-8">
-    <title>Riot API 요청 결과</title>
-</head>
-<body>
-<h1>Riot API 요청 결과</h1>
+<h3>Riot API 요청 결과</h3>
 <%
     request.setCharacterEncoding("UTF-8");
     // 사용자 입력 값 가져오기
@@ -22,7 +15,11 @@
     if (gameName != null && tagLine != null) {
         try {
             // Riot API 키 설정
-            String apiKey = "RGAPI-5ad285e9-5261-4450-8df9-0740ce738916";
+            String apiKey = (String) application.getAttribute("apiKey");
+            if (apiKey == null || apiKey.isEmpty()) {
+                apiKey = "RGAPI-efdd7a01-a4b8-4f75-af75-a3f303bc1e82"; // 기본값 설정
+                out.println("<p style='color: red;'>API Key가 설정되지 않았습니다. 기본 API Key를 사용합니다.</p>");
+            }
 
             // 랭크 정보 가져오는 법: ACCOUNT-V1 -> SUMMONER-V4 -> LEAGUE-V4 순으로 3번 요청해야함. 2024-11-13 기준
             // 1. ACCOUNT-V1에선 닉네임과 태그로 puuid를 가져오고,
@@ -165,6 +162,3 @@
         }
     }
 %>
-<button onclick="window.location.href='riotApi.jsp'">다시 입력하기</button>
-</body>
-</html>
