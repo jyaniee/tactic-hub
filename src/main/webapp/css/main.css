@@ -282,6 +282,34 @@ h1 {
     color: white;
 }
 
+.membership {
+    transition: all 0.3s ease;
+    border-color: #2c9c73; !important;
+    color: #2c9c73; !important;
+    animation: pulse 1.0s infinite ease-in-out;
+}
+
+.membership:hover {
+    transform: scale(1.05);
+    border-color: #2beda6;
+    color: #2beda6;
+}
+
+@keyframes pulse {
+    0%, 10%, 90%, 100% {
+        transform: scale(1);
+    }
+    40% {
+        transform: scale(1.025);
+    }
+    50% {
+        transform: scale(1.05);
+    }
+    60% {
+        transform: scale(1.075);
+    }
+}
+
 .form-control {
     background-color: rgba(255, 255, 255, 0.1);
 }
