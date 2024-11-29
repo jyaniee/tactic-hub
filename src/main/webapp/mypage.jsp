@@ -18,5 +18,9 @@
 %>
 <h1>마이페이지</h1>
 <p>안녕하세요, <%= username %>님!</p>
+<%
+if(username.equals("관리자"))
+%>
+<a href="admin.jsp">관리자 페이지</a>
 </body>
 </html>
