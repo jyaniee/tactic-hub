@@ -1,6 +1,7 @@
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%
-    String currentUri = request.getRequestURI(); //현재 페이지 URL 확인
+    String currentUri = request.getRequestURI(); // 현재 페이지 URL 확인
+    String username = (String) session.getAttribute("username"); // 세션에서 로그인된 사용자 이름 가져오기
 %>
 <div class="header-container w-100 bg-transparent"
      style="background-color: rgba(0, 0, 0, 0.8); backdrop-filter: blur(5px); position: fixed; top: 0; z-index: 1000;">
@@ -17,9 +18,15 @@
                 <li><a href="mypage.jsp" class="nav-link px-2 link-light <%= currentUri.contains("mypage.jsp") ? "active" : "" %> me-2">마이페이지</a></li>
             </ul>
             <!-- 현재 uri 기준으로 동적으로 underline 생성 -->
+
             <div class="col-md-3 text-end">
+                <% if (username != null) { %>
+                <span class="text-white me-2"><%= username %>님 환영합니다!</span>
+                <a href="logout.jsp" type="button" class="navbtn btn text-white btn-outline-light">로그아웃</a>
+                <% } else { %>
                 <a href="login.jsp" type="button" class="navbtn btn me-2 btn-outline-light text-white">로그인</a>
                 <a href="signup.jsp" type="button" class="navbtn btn text-white btn-outline-light">회원가입</a>
+                <% } %>
             </div>
         </header>
     </div>
