@@ -174,7 +174,7 @@
       </div>
     </header>
 -->
-    <div class="header-container w-100 bg-transparent" style="background-color: rgba(0, 0, 0, 0.8); backdrop-filter: blur(5px)">
+<!--    <div class="header-container w-100 bg-transparent" style="background-color: rgba(0, 0, 0, 0.8); backdrop-filter: blur(5px)">
       <div class="container">
         <header class="d-flex flex-wrap align-items-center justify-content-center justify-content-md-between py-1 pt-3">
           <div class="col-md-3 mb-2 mb-md-0">
@@ -182,15 +182,16 @@
               <img src="images/TacticHub-Logo.png" alt="logo" width="120" height="24">
             </a>
           </div>
-
-        <ul class="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0">
+-->
+    <%@ include file="top.jsp"%>
+ <!--       <ul class="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0">
           <li><a href="." class="nav-link px-2 text-white active me-2">홈</a></li>
           <li><a href="main.jsp" class="nav-link px-2 text-white me-2">팀 매칭</a></li>
           <li><a href="login.jsp" class="nav-link px-2 text-white me-2">마이페이지</a></li>
-          <!--
+
           <li><a href="#" class="nav-link px-2">FAQs</a></li>
           <li><a href="#" class="nav-link px-2">About</a></li>
-          -->
+
         </ul>
 
         <div class="col-md-3 text-end">
@@ -199,6 +200,7 @@
         </div>
       </header>
       </div></div>
+-->
   <div class="cover-container d-flex w-100 h-100 p-3 mx-auto mt-auto flex-column justify-content-center align-items-center">
 
   <main class="px-3 mt-auto">

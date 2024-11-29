@@ -18,7 +18,7 @@
   </style>
 </head>
 <body>
-<!-- 헤더 -->
+<!-- 헤더 
 <div class="header-container w-100 bg-transparent"
      style="background-color: rgba(0, 0, 0, 0.8); backdrop-filter: blur(5px); position: fixed; top: 0; z-index: 1000;">
   <div class="container">
@@ -40,7 +40,8 @@
     </header>
   </div>
 </div>
-
+-->
+<%@ include file="top.jsp"%>
 <div class="content-container position-relative">
   <!-- 로딩 애니메이션 -->
   <div class="loading-animation" id="loading-animation">
@@ -97,7 +98,7 @@
 </div>
 
 
-<!-- 푸터 -->
+<!-- 푸터
 <div class="container">
   <footer class="d-flex flex-wrap justify-content-between align-items-center py-3 mt-4 border-top">
     <div class="col-md-4 d-flex align-items-center" style="width: 50%">
@@ -114,7 +115,8 @@
     </ul>
   </footer>
 </div>
-
+-->
+<%@ include file="bot.jsp"%>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
