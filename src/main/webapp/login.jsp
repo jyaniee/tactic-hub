@@ -162,7 +162,7 @@
 
 
 <main class="form-signin w-100 m-auto">
-    <form class="text-center" style="max-width: 500px; width: 100%">
+    <form class="text-center" style="max-width: 500px; width: 100%" action="loginProcess.jsp" method="post">
         <a href="index.jsp"><img class="mb-2" src="./images/TacticHub-Logo.png" alt="" width="200" height="40"></a>
        <!-- <p class="lg-title fw-bold" style="font-size: 18px" style="margin-bottom: 0; !important;">로그인</p>
         -->
@@ -178,11 +178,11 @@
             <!-- 입력 폼 -->
             <div class="mb-3">
                 <div class="form-floating mb-2">
-                    <input id="email-address" type="email" class="form-control" placeholder="Email address" required>
+                    <input id="email-address" type="email" name="email" class="form-control" placeholder="Email address" required>
                     <label for="email-address">이메일</label>
                 </div>
                 <div class="form-floating">
-                    <input id="password" type="password" class="form-control" placeholder="Password" required style="height: 0">
+                    <input id="password" type="password" name="password" class="form-control" placeholder="Password" required style="height: 0">
                     <label for="password">비밀번호</label>
                 </div>
             </div>

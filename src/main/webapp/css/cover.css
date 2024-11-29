@@ -111,40 +111,6 @@ h1 {
   font-size: 1rem;
 }
 
-/*
- * Header
- */
-
-.nav-link {
-  color: rgba(255, 255, 255, .5);
-  border-bottom: .25rem solid transparent;
-}
-
-.nav-link:hover,
-.nav-link:focus {
-  border-bottom-color: rgba(255, 255, 255, 1); !important;
-}
-
-.nav-masthead .nav-link + .nav-link {
-  margin-left: 1rem;
-}
-
-.nav-link.active {
-  color: #fff;
-  border-bottom-color: rgba(255, 255, 255, 1); !important;
-}
-
-.nav-link {
-  font-weight: 600;
-}
-
-.navbtn {
-  font-size: 0.875rem;
-}
-
-.navbtn:hover{
-  background-color: rgba(255, 255, 255, 0.5);
-}
 
 .lead a {
   mix-blend-mode: lighten;

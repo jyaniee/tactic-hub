@@ -31,27 +31,7 @@
 </head>
 <body>
 <!-- 헤더 -->
-<div class="header-container w-100 bg-transparent"
-     style="background-color: rgba(0, 0, 0, 0.8); backdrop-filter: blur(5px); position: fixed; top: 0; z-index: 1000;">
-  <div class="container">
-    <header class="d-flex flex-wrap align-items-center justify-content-center justify-content-md-between py-1 pt-3">
-      <div class="col-md-3 mb-2 mb-md-0">
-        <a href="index.jsp" class="d-inline-flex link-body-emphasis text-decoration-none">
-          <img src="images/TacticHub-Logo.png" alt="logo" width="120" height="24">
-        </a>
-      </div>
-      <ul class="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0">
-        <li><a href="." class="nav-link px-2 link-light me-2">홈</a></li>
-        <li><a href="main.jsp" class="nav-link px-2 link-light active me-2">팀 매칭</a></li>
-        <li><a href="#" class="nav-link px-2 link-light me-2">마이페이지</a></li>
-      </ul>
-      <div class="col-md-3 text-end">
-        <a href="login.jsp" type="button" class="navbtn btn me-2 btn-outline-light text-white">로그인</a>
-        <a href="signup.jsp" type="button" class="navbtn btn text-white btn-outline-light">회원가입</a>
-      </div>
-    </header>
-  </div>
-</div>
+<%@ include file="header.jsp" %>
 
 <!-- 메인 컨텐츠 -->
 <div class="content-container">
