@@ -158,7 +158,38 @@
                 </tbody>
             </table>
             <h2>Riot API 테스트</h2>
-            <a>Riot API 닉네임#태그 입력</a>
+            <!-- Riot API Key 설정 -->
+            <%
+                // 현재 API Key를 표시
+                String currentApiKey = (String) application.getAttribute("apiKey");
+                if (currentApiKey == null || currentApiKey.isEmpty()) {
+                    currentApiKey = "RGAPI-efdd7a01-a4b8-4f75-af75-a3f303bc1e82"; // 기본값
+                    application.setAttribute("apiKey", currentApiKey);
+                }
+            %>
+
+            <!-- 현재 API Key 표시 -->
+            <p>현재 설정된 API Key: <strong><%= currentApiKey %></strong></p>
+
+
+            <h3>API Key 설정</h3>
+            <!-- API Key 수정 -->
+            <form method="post">
+                <label for="newApiKey" class="form-label">새 API Key 입력:</label>
+                <input type="text" id="newApiKey" name="apiKey" class="form-control" required>
+                <button type="submit" class="btn btn-primary mt-2">API Key 갱신</button>
+            </form>
+            <%
+                // API Key 갱신 처리
+                String newApiKey = request.getParameter("apiKey");
+                if (newApiKey != null && !newApiKey.trim().isEmpty()) {
+                    application.setAttribute("apiKey", newApiKey);
+                    currentApiKey = newApiKey;
+                    out.println("<p class='text-success mt-3'>API Key가 갱신되었습니다: " + currentApiKey + "</p>");
+                }
+            %>
+            <hr>
+
             <form method="post">
                 닉네임: <input type="text" name="gameName" required><br>
                 태그: <input type="text" name="tagLine" required><br>

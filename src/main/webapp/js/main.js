@@ -31,7 +31,7 @@ document.addEventListener("DOMContentLoaded", function () {
     submitButton.addEventListener("click", function () {
         const playerName = document.getElementById("player").value.trim();
         const selectedRank = document.querySelector(".rank-icon button.active");
-        const selectedTier = document.querySelector(".tier_radio input[type='radio']:checked");
+        const selectedTier = document.querySelector(".tier_radio input[type='radio']:checked"); //선택된 라디오 버튼 찾기
 
         if (!playerName || !selectedRank || !selectedTier) {
             alert("모든 항목을 입력해주세요!");
@@ -44,7 +44,7 @@ document.addEventListener("DOMContentLoaded", function () {
         }
 
         // html 태그 속성에서 가져옴
-        const rank = selectedRank.dataset.rank;
+        const rank = selectedRank.dataset.rank; //dataset -> data- 로 시작하는 커스텀 데이터 속성에 접근
         const tier = selectedTier.value;
 
         // 미리 선언해둔 rankScores와 tierScores를 이용해서 선언
@@ -61,7 +61,7 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 
     resetButton.addEventListener("click", function () {
-        playerInputs.forEach((input) => (input.value = ""));
+        playerInputs.forEach((input) => (input.value = ""));//input 요소들에 대해 순차적으로 실행되는 메서드
         currentPlayerIndex = 0;
         playerData.length = 0;
     });
@@ -79,7 +79,7 @@ document.addEventListener("DOMContentLoaded", function () {
         }
         console.log(playerData);
         // 데이터를 서버로 전송
-        fetch("TeamServlet", {
+        fetch("TeamServlet", { //http요청을 보내는 함수
             method: "POST",
             headers: {"Content-Type": "application/json"},
             body: JSON.stringify(playerData),
@@ -89,7 +89,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 // 서버에서 받은 결과 처리
                 localStorage.setItem("team1", JSON.stringify(result.team1));
                 localStorage.setItem("team2", JSON.stringify(result.team2));
-                console.log(result);
+                console.log("result: " + result);
                 window.location.href = "result.jsp";
             })
             .catch((error) => {

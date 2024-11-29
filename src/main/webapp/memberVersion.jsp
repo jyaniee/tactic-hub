@@ -12,17 +12,16 @@
   <script src="assets/js/color-modes.js"></script>
   <script src="js/main.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-
   <script>
-      document.addEventListener("DOMContentLoaded", () => {
+    document.addEventListener("DOMContentLoaded", () => {
       const rankButtons = document.querySelectorAll(".rank-icon button");
 
       rankButtons.forEach((button) => {
-      button.addEventListener("click", () => {
-      // 모든 버튼의 active 상태 제거
-      rankButtons.forEach((btn) => btn.classList.remove("active"));
-      // 클릭한 버튼에 active 상태 추가
-      button.classList.add("active");
+        button.addEventListener("click", () => {
+          // 모든 버튼의 active 상태 제거
+          rankButtons.forEach((btn) => btn.classList.remove("active"));
+          // 클릭한 버튼에 active 상태 추가
+          button.classList.add("active");
         });
       });
     });
@@ -30,46 +29,33 @@
   <style>
   </style>
 </head>
-<body>
+<body style="background-image: url('images/irelia.jpg');">
 <!-- 헤더 -->
 <%@ include file="header.jsp" %>
-
+<%
+  if (!isLoggedIn) {
+    // 로그인이 안 되어 있으면 로그인 페이지로 리다이렉트
+    response.sendRedirect("login.jsp");
+    return;
+  }
+%>
 <!-- 메인 컨텐츠 -->
 <div class="content-container">
-  <h1 class="mb-4 text-start" style="font-size: 28px">사용자 설정 게임 팀 매칭</h1>
-  <p class="text-start">플레이어의 이름과 랭크를 선택해주세요. <img src="images/TacticHub-Logo.png" alt="logo" width="80" height="16" class="mb-1"> 가 각 팀의 평균 실력을 균등하게 맞춰줍니다. <br>5v5 커스텀 게임을 위한 최적의 팀을 간편하게 만들어보세요!</p>
+  <h1 class="mb-4 text-start" style="font-size: 28px">사용자 설정 게임 팀 매칭<span class="badge bg-success" style="font-size: 16px; margin-left: 10px; ">회원 전용</span></h1>
+  <p class="text-start">로그인한 회원만 이용할 수 있는 고급 팀 구성 서비스입니다.
+    <br>API를 통해 더욱 간편하게 사용자 정보를 입력하고, 랭크 선택 없이 자동으로 최적의 팀 구성을 경험해보세요!
+  </p>
 
   <!-- 플레이어 입력 -->
   <div class="mb-3">
     <label for="player" class="form-label fw-bold">플레이어</label>
-    <input type="text" id="player" name="player" class="form-control" placeholder="" style="border: none;">
+    <input type="text" id="player" name="player" class="form-control" placeholder="플레이어 이름#KR1" style="border: none;">
   </div>
 
-  <!-- 랭크 선택 -->
-  <div class="mb-3">
-    <label class="form-label fw-bold">랭크</label>
-    <div class="d-flex gap-2 rank-icon">
-      <button class="btn btn-outline-secondary p-1" data-rank="iron"><img src="images/tiers/iron.png" alt="Iron"></button>
-      <button class="btn btn-outline-secondary p-1" data-rank="bronze"><img src="images/tiers/bronze.png" alt="Bronze"></button>
-      <button class="btn btn-outline-secondary p-1" data-rank="silver"><img src="images/tiers/silver.png" alt="Silver"></button>
-      <button class="btn btn-outline-secondary p-1" data-rank="gold"><img src="images/tiers/gold.png" alt="Gold"></button>
-      <button class="btn btn-outline-secondary p-1" data-rank="platinum"><img src="images/tiers/platinum.png" alt="Platinum"></button>
-      <button class="btn btn-outline-secondary p-1" data-rank="emerald"><img src="images/tiers/emerald.png" alt="Emerald"></button>
-      <button class="btn btn-outline-secondary p-1" data-rank="diamond"><img src="images/tiers/diamond.png" alt="Diamond"></button>
-    </div>
-  </div>
-
-  <!-- 티어 선택 -->
-  <div class="tier_radio d-flex justify-content-start gap-3 mb-3 ps-2">
-    <input type="radio" id="tierI" name="tier" value="1" class="pe-4 ps-4"><label for="tierI">I</label>
-    <input type="radio" id="tierII" name="tier" value="2" class="p-auto"><label for="tierII">II</label>
-    <input type="radio" id="tierIII" name="tier" value="3" class="p-auto"><label for="tierIII">III</label>
-    <input type="radio" id="tierIV" name="tier" value="4" class="p-auto"><label for="tierIV">IV</label>
-  </div>
 
   <!-- 확인 및 초기화 버튼 -->
   <div class="d-flex gap-3 justify-content-start mb-3">
-    <button class="btn fw-bold" id="submit" style="">확인</button>
+    <button class="btn fw-bold" id="submit" style="">API로 불러오기</button>
     <button class="btn fw-bold" id="reset" style="">초기화</button>
   </div>
 
@@ -95,26 +81,10 @@
   <div class="d-flex gap-3 justify-content-center mt-3 mb-5">
     <a><button class="btn fw-bold" id="calc" style="border-color: #adb5bd">팀 구성하기</button></a>
   </div>
-  <hr>
-  <div class="d-flex gap-3 justify-content-center mt-5">
-    <%
-      if(isLoggedIn){
-    %>
-    <p>더 <b>간편하고 스마트한 팀 구성</b>을 원하시나요?<br>지금 바로 회원 전용 서비스를 이용해보세요!</p>
-    <a href="memberVersion.jsp"><button class="membership btn fw-bold">회원 전용 버전</button></a>
-    <%}
-      else{
-    %>
-    <p>더 <b>간편하고 스마트한 팀 구성</b>을 원하시나요?<br>지금 바로 <a href="login.jsp">로그인</a>하고 회원 전용 서비스를 이용해보세요!</p>
-    <a href="memberVersion.jsp"><button class="membership btn fw-bold">회원 전용 버전</button></a>
-    <%
-      }
-    %>
-  </div>
 
 </div>
 
-<!-- 푸터
+<!-- 푸터 -->
 <div class="container">
   <footer class="d-flex flex-wrap justify-content-between align-items-center py-3 mt-4 border-top">
     <div class="col-md-4 d-flex align-items-center" style="width: 50%">
@@ -131,8 +101,6 @@
     </ul>
   </footer>
 </div>
--->
-<%@include file="footer.jsp"%>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
