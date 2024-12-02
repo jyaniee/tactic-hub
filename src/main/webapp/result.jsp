@@ -41,7 +41,7 @@
   </div>
 </div>
 -->
-<%@ include file="top.jsp"%>
+<%@ include file="header.jsp"%>
 <div class="content-container position-relative">
   <!-- 로딩 애니메이션 -->
   <div class="loading-animation" id="loading-animation">

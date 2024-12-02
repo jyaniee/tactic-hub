@@ -1,14 +1,17 @@
 package com.example.tactichub.dao;
 
 import com.example.tactichub.dto.UserDTO;
+import io.github.cdimascio.dotenv.Dotenv;
+
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
 public class UserDAO {
-    private final String url = "jdbc:mysql://localhost:3306/tactic?serverTimezone=UTC&useSSL=false&characterEncoding=utf-8";
-    private final String username = "root";
-    private final String password = "dongyang";
+    private static final Dotenv dotenv = Dotenv.configure().load();
+    private final String url = dotenv.get("DB_URL");
+    private final String username = dotenv.get("DB_USERNAME");
+    private final String password = dotenv.get("DB_PASSWORD");
 
     private Connection getConnection() throws SQLException {
         try {

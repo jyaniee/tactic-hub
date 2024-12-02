@@ -2,15 +2,18 @@ package com.example.tactichub.dao;
 
 import com.example.tactichub.dto.AdminDTO;
 import java.sql.*;
+import io.github.cdimascio.dotenv.Dotenv;
 
 public class AdminDAO {
-    private final String url = "jdbc:mysql://localhost:3306/tactic?serverTimezone=UTC&useSSL=false&characterEncoding=utf-8";
-    private final String username = "root";
-    private final String password = "dongyang";
+    private static final Dotenv dotenv = Dotenv.configure().load();
+    private final String url = dotenv.get("DB_URL");
+    private final String username = dotenv.get("DB_USERNAME");
+    private final String password = dotenv.get("DB_PASSWORD");
 
     private Connection getConnection() throws SQLException {
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
+            System.out.println("JDBC URL: " + url);
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
         }

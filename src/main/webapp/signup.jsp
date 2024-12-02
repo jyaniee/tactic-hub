@@ -8,6 +8,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!doctype html>
 <html lang="en" data-bs-theme="auto">
+
 <head><script src="assets/js/color-modes.js"></script>
     <link rel="icon" type="image/png" href="images/TacticHub-Icon.png">
     <meta charset="utf-8">
@@ -162,7 +163,7 @@
 
 
 <main class="form-signin w-100 m-auto" style="max-height: 760px">
-    <form class="text-center" style="max-width: 500px; width: 100%">
+    <form class="text-center" style="max-width: 500px; width: 100%" action="./register" method="post">
         <a href="index.jsp"><img class="mb-2" src="./images/TacticHub-Logo.png" alt="" width="200" height="40"></a>
 
         <div class="container py-4 px-3 rounded" style="max-width: 480px; background-color: transparent">
@@ -179,20 +180,20 @@
             <!-- 입력 폼 -->
             <div class="mb-3">
                 <div class="form-floating mb-2">
-                    <input id="email-address" type="email" class="form-control" placeholder="Email address" required>
+                    <input id="email-address" name="email" type="email" class="form-control" placeholder="Email address" required>
                     <label for="email-address">이메일<span style="font-size: 12px; color: gray">(example@example.com)</span></label>
                 </div>
                 <div class="form-floating" style="--bs-border-radius: 0">
-                    <input id="password" type="password" class="form-control" placeholder="Password" required style="height: 0">
+                    <input id="password" name="password" type="password" class="form-control" placeholder="Password" required style="height: 0">
                     <label for="password">비밀번호<span style="font-size: 12px; color: gray">(영문, 숫자, 특수문자 조합 8~20자리)</span></label>
                 </div>
                 <div class="form-floating" style="--bs-border-radius: 0">
-                    <input id="password-confirm" type="password" class="form-control" placeholder="Password Confirm" required style="height: 0">
-                    <label for="password">비밀번호 확인<span style="font-size: 12px; color: gray">(영문, 숫자, 특수문자 조합 8~20자리)</span></label>
+                    <input id="password-confirm" name="password-confirm" type="password" class="form-control" placeholder="Password Confirm" required style="height: 0">
+                    <label for="password-confirm">비밀번호 확인<span style="font-size: 12px; color: gray">(영문, 숫자, 특수문자 조합 8~20자리)</span></label>
                 </div>
                 <div class="form-floating">
-                    <input id="summoner" type="text" class="form-control" placeholder="Summoner" required style="height: 0; border-top-left-radius: 0; border-top-right-radius: 0">
-                    <label for="password">소환사 이름<span style="font-size: 12px; color: gray">(플레이어 이름#태그)</span></label>
+                    <input id="summoner" name="summoner" type="text" class="form-control" placeholder="Summoner" required style="height: 0; border-top-left-radius: 0; border-top-right-radius: 0">
+                    <label for="summoner">소환사 이름<span style="font-size: 12px; color: gray">(플레이어 이름#태그)</span></label>
                 </div>
             </div>
             <div class="mb-3 text-start" style="font-size: 14px">
@@ -240,6 +241,10 @@
             </button>
 
         </div>
+        <% String error = (String) request.getAttribute("error"); %>
+        <% if (error != null) { %>
+        <p style="color: red;"><%= error %></p>
+        <% } %>
 
     </form>
 </main>
