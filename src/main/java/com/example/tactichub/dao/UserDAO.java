@@ -16,9 +16,11 @@ public class UserDAO {
     private Connection getConnection() throws SQLException {
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
+            System.out.println("debug(url,username, password): "+ url + ", " + username + ", " + password);
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
         }
+        System.out.println("DB Connect.");
         return DriverManager.getConnection(url, username, password);
     }
 

@@ -44,4 +44,13 @@ public class UserDTO {
     public void setSiteNickname(String siteNickname) {
         this.siteNickname = siteNickname;
     }
+
+    @Override
+    public String toString() {
+        return "UserDTO {" +
+                "id='" + id + '\'' +
+                ", lolNicknameTag='" + lolNicknameTag + '\'' +
+                ", siteNickname='" + siteNickname + '\'' +
+                '}';
+    }
 }

@@ -25,7 +25,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@docsearch/css@3">
 
     <link href="assets/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="css/login.css">
+    <link rel="stylesheet" href="css/signup.css">
     <style>
         .bd-placeholder-img {
             font-size: 1.125rem;
@@ -105,8 +105,6 @@
         }
     </style>
 
-    <!-- Custom styles for this template -->
-    <link href="sign-in.css" rel="stylesheet">
 </head>
 <body class="d-flex align-items-center py-4 bg-body-tertiary" style="background-image: url('./images/katarina-lgbg.jpg');
  background-repeat : no-repeat; background-position: center top; background-size: 100% 100%; ">
@@ -162,8 +160,8 @@
 </div>
 
 
-<main class="form-signin w-100 m-auto" style="max-height: 760px">
-    <form class="text-center" style="max-width: 500px; width: 100%" action="./register" method="post">
+<main class="form-signin w-100 m-auto" style="min-height: 100%; height: auto;">
+    <form class="text-center" style="max-width: 500px; width: 100%;" action="${pageContext.request.contextPath}/register" method="post">
         <a href="index.jsp"><img class="mb-2" src="./images/TacticHub-Logo.png" alt="" width="200" height="40"></a>
 
         <div class="container py-4 px-3 rounded" style="max-width: 480px; background-color: transparent">
@@ -191,9 +189,13 @@
                     <input id="password-confirm" name="password-confirm" type="password" class="form-control" placeholder="Password Confirm" required style="height: 0">
                     <label for="password-confirm">비밀번호 확인<span style="font-size: 12px; color: gray">(영문, 숫자, 특수문자 조합 8~20자리)</span></label>
                 </div>
-                <div class="form-floating">
-                    <input id="summoner" name="summoner" type="text" class="form-control" placeholder="Summoner" required style="height: 0; border-top-left-radius: 0; border-top-right-radius: 0">
+                <div class="form-floating" style="--bs-border-radius: 0">
+                    <input id="summoner" name="summoner" type="text" class="form-control" placeholder="Summoner" required style="margin-bottom: 10px;">
                     <label for="summoner">소환사 이름<span style="font-size: 12px; color: gray">(플레이어 이름#태그)</span></label>
+                </div>
+                <div class="form-floating">
+                    <input id="nickname" name="nickname" type="text" class="form-control" placeholder="Summoner" required style="height: 0; border-top-left-radius: 0; border-top-right-radius: 0">
+                    <label for="nickname">닉네임<span style="font-size: 12px; color: gray">(사이트에서 사용할 이름)</span></label>
                 </div>
             </div>
             <div class="mb-3 text-start" style="font-size: 14px">
@@ -233,7 +235,7 @@
 
 
             <!-- 버튼 -->
-            <button type="submit" class="btn btn-dark w-100 py-2 mb-3 fw-bold mt-1">
+            <button type="submit" class="btn btn-dark w-100 py-2 fw-bold mt-3">
                 <!-- <svg class="bi bi-lock-fill me-2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor" width="16" height="16">
                      <path d="M8 1a4 4 0 0 1 4 4v3H4V5a4 4 0 0 1 4-4zM3 9V5a5 5 0 1 1 10 0v4h.5A1.5 1.5 0 0 1 15 10.5v4A1.5 1.5 0 0 1 13.5 16h-11A1.5 1.5 0 0 1 1 14.5v-4A1.5 1.5 0 0 1 2.5 9H3zm10 1H3v4h10v-4z"></path>
                  </svg> -->
