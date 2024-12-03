@@ -8,21 +8,27 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class UserDAO {
-    private static final Dotenv dotenv = Dotenv.configure().load();
-    private final String url = dotenv.get("DB_URL");
-    private final String username = dotenv.get("DB_USERNAME");
-    private final String password = dotenv.get("DB_PASSWORD");
+   // private static final Dotenv dotenv = Dotenv.configure().load();
+   // private final String url = dotenv.get("DB_URL");
+   // private final String username = dotenv.get("DB_USERNAME");
+   // private final String password = dotenv.get("DB_PASSWORD");
+    private final String url = "jdbc:mysql://tactichub-db.cx0wakkc4xro.ap-northeast-2.rds.amazonaws.com:3306/tactic?serverTimezone=UTC&useSSL=false&characterEncoding=utf-8";
+    private final String username = "admin";
+    private final String password = "tactichub2024!";
 
     private Connection getConnection() throws SQLException {
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
-            System.out.println("debug(url,username, password): "+ url + "\n" + username + "\n" + password);
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
             throw new SQLException("JDBC Driver not found");
         }
-        System.out.println("DB Connect.");
-        return DriverManager.getConnection(url, username, password);
+        try {
+            return DriverManager.getConnection(url, username, password);
+        } catch (SQLException e) {
+            e.printStackTrace();
+            throw new SQLException("Failed to connect to DB: " + e.getMessage());
+        }
     }
 
     public boolean insertUser(UserDTO user) {
@@ -33,11 +39,13 @@ public class UserDAO {
             pstmt.setString(2, user.getPassword());
             pstmt.setString(3, user.getLolNicknameTag());
             pstmt.setString(4, user.getSiteNickname());
-            return pstmt.executeUpdate() > 0;
+            int rowsAffected = pstmt.executeUpdate(); // 성공적으로 삽입된 행 수 반환
+            return rowsAffected > 0; // 1 이상이면 삽입 성공, 아니면 실패
         } catch (SQLException e) {
             e.printStackTrace();
+
+            return false;
         }
-        return false;
     }
 
     public List<UserDTO> getAllUsers() {
