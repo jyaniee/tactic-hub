@@ -67,4 +67,27 @@ public class UserDAO {
         }
         return userList;
     }
+
+    public UserDTO getUserByEmailAndPassword(String email, String password) {
+        String sql = "SELECT * FROM users WHERE id = ? AND password = ?";
+        try (Connection conn = getConnection();
+             PreparedStatement pstmt = conn.prepareStatement(sql)) {
+            pstmt.setString(1, email);
+            pstmt.setString(2, password);
+            ResultSet rs = pstmt.executeQuery();
+
+            if (rs.next()) {
+                return new UserDTO(
+                        rs.getString("id"),
+                        rs.getString("password"),
+                        rs.getString("lol_nickname_tag"),
+                        rs.getString("site_nickname")
+                );
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return null; // 로그인 실패 시 null 반환
+    }
+
 }
