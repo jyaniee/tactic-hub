@@ -36,9 +36,19 @@
                     </a>
                 </li>
                 <li>
-                    <a href="mypage.jsp" class="nav-link px-2 text-white <%= currentPage.endsWith("mypage.jsp") ? "active" : "" %> me-2">
+                    <%
+                        if (isLoggedIn){
+                    %>
+                    <a href="mypage" class="nav-link px-2 text-white <%= currentPage.endsWith("mypage.jsp") ? "active" : "" %> me-2">
                         마이페이지
-                    </a>
+                    </a><%
+                    } else {
+                    %>
+                    <a href="login.jsp" class="nav-link px-2 text-white <%= currentPage.endsWith("mypage.jsp") ? "active" : "" %> me-2">
+                        마이페이지 </a>
+                    <%
+                        }
+                    %>
                 </li>
             </ul>
 
@@ -47,7 +57,7 @@
                     if (isLoggedIn) {
                 %>
                 <!-- 로그인 상태 -->
-                <a href="mypage.jsp" class="me-2 text-white" style="text-decoration: none;">환영합니다. <span class="fw-bold"><%= username %></span>님</a>
+                <a href="mypage" class="me-2 text-white" style="text-decoration: none;">환영합니다. <span class="fw-bold"><%= username %></span>님</a>
                 <a href="logout.jsp" class="navbtn btn text-white btn-outline-light">로그아웃</a>
                 <%
                 } else {

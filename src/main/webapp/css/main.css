@@ -156,7 +156,7 @@ h1 {
     max-width: 900px;
     margin: 60px auto;
     color: white;
-   backdrop-filter: blur(20px);
+    backdrop-filter: blur(20px);
     -webkit-backdrop-filter: blur(20px);
     text-align: left;
 }
