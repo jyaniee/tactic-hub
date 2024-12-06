@@ -31,7 +31,7 @@
     <a href="#" class="menu-item" data-target="content-1">홈</a>
     <a href="#" class="menu-item active" data-target="content-2">내 정보</a>
     <a href="#" class="menu-item" data-target="content-3">매치 히스토리</a>
-    <a href="logout.jsp" class="menu-item">로그아웃</a>
+    <a href="logout.jsp" class="">로그아웃</a>
 </div>
 
 <!-- Content -->
