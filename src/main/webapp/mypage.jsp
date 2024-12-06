@@ -26,25 +26,38 @@
 </head>
 <body class="m-0 vh-100 d-flex">
 <!-- Sidebar -->
-<div class="sidebar vh-100">
-    <img src="images/TacticHub-Logo.png" width="120px" class="mb-3 p-1">
-    <a href="#" class="menu-item" data-target="content-1">홈</a>
-    <a href="#" class="menu-item active" data-target="content-2">내 정보</a>
-    <a href="#" class="menu-item" data-target="content-3">매치 히스토리</a>
-    <a href="logout.jsp" class="">로그아웃</a>
+<div class="sidebar vh-100 d-flex flex-column justify-between">
+    <div>
+        <h4 class="fw-bold mb-4 mt-2">마이페이지</h4>
+        <a href="#" class="menu-item active" data-target="content-1"><img src="images/person.png" class="me-2 pb-1" alt="my-info" width="20px">내 정보</a>
+        <a href="#" class="menu-item" data-target="content-2"><img src="images/bookmark.png" class="me-2 pb-1" alt="history" width="20px">매치 히스토리</a>
+        <a href="logout.jsp" class=""><img src="images/logout.png" class="me-2 pb-1" alt="logout" width="20px">로그아웃</a>
+        <%
+            String username = (String) session.getAttribute("username");
+            boolean isAdmin = username.equals("admin");
+            if(isAdmin){
+        %>
+        <a href="admin.jsp" class="admin"><img src="images/admin.png" class="me-2 pb-1" alt="my-info" width="20px">관리자 페이지</a>
+        <%
+            }
+        %>
+    </div>
+    <!-- Footer -->
+    <div class="mt-auto text-center mb-3">
+        <a href="index.jsp" class="logo"><img src="images/TacticHub-Logo.png" alt="Footer Logo" style="width: 80px;"></a>
+        <p style="font-size: 12px; color: #818aaa; margin-bottom: 5px;">백엔드 실습 | 5조 | 김호겸, 문정헌, 심재한</p>
+    </div>
 </div>
+
 
 <!-- Content -->
 <div class="content">
-    <div id="content-1" class="content-section" style="display: none;">
-        <h3>홈</h3>
-        <p>여기는 홈 페이지입니다.</p>
-    </div>
     <!-- 내정보 -->
-    <div id="content-2" class="content-section">
+    <div id="content-1" class="content-section">
         <h3 class="fw-bold">내 정보</h3>
         <div class="card">
-            <p class="card-title fw-bold">계정 정보</p>
+            <p class="card-title fw-bold" style="font-size: 18px">계정 정보</p>
+            <p class="fw-bold" style="font-size: 14px;">표시되는 랭크 정보는 솔로 랭크를 우선으로 조회됩니다.</p>
             <div class="row">
                 <!-- Account Info -->
                 <div class="col-md-6 mb-3">
@@ -113,12 +126,22 @@
 
             </div>
         </div>
+
+        <div class="card mt-4">
+            <p class="card-title fw-bold">추가 정보</p>
+            <p>추가 예정</p>
+        </div>
     </div>
 
     <!-- 매치 히스토리 -->
-    <div id="content-3" class="content-section" style="display: none;">
-        <h3>매치 히스토리</h3>
-        <p>여기는 매치 히스토리 페이지 입니다.</p>
+    <div id="content-2" class="content-section" style="display: none;">
+        <h3 class="fw-bold">매치 히스토리</h3>
+        <div class="card">
+            <p class="card-title fw-bold">저장된 팀 구성 기록</p>
+            <div class="card border-0 inner-card">
+                기록
+            </div>
+        </div>
     </div>
 </div>
 
