@@ -6,6 +6,16 @@ import java.util.Properties;
 import java.io.InputStream;
 
 public class DatabaseConnection {
+    static {
+        try {
+            // JDBC 드라이버 로드
+            Class.forName("com.mysql.cj.jdbc.Driver");
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+            throw new RuntimeException("JDBC Driver not found: " + e.getMessage());
+        }
+    }
+
     public static Connection getConnection() throws Exception {
         Properties props = new Properties();
         InputStream input = DatabaseConnection.class.getClassLoader().getResourceAsStream("db.properties");

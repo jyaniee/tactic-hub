@@ -1,39 +1,18 @@
 package com.example.tactichub.dao;
 
+import com.example.tactichub.DatabaseConnection;
 import com.example.tactichub.dto.UserDTO;
-import io.github.cdimascio.dotenv.Dotenv;
 
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
 public class UserDAO {
-   // private static final Dotenv dotenv = Dotenv.configure().load();
-   // private final String url = dotenv.get("DB_URL");
-   // private final String username = dotenv.get("DB_USERNAME");
-   // private final String password = dotenv.get("DB_PASSWORD");
-    private final String url = "jdbc:mysql://tactichub-db.cx0wakkc4xro.ap-northeast-2.rds.amazonaws.com:3306/tactic?serverTimezone=UTC&useSSL=false&characterEncoding=utf-8";
-    private final String username = "admin";
-    private final String password = "tactichub2024!";
 
-    private Connection getConnection() throws SQLException {
-        try {
-            Class.forName("com.mysql.cj.jdbc.Driver");
-        } catch (ClassNotFoundException e) {
-            e.printStackTrace();
-            throw new SQLException("JDBC Driver not found");
-        }
-        try {
-            return DriverManager.getConnection(url, username, password);
-        } catch (SQLException e) {
-            e.printStackTrace();
-            throw new SQLException("Failed to connect to DB: " + e.getMessage());
-        }
-    }
-
+    // 회원 삽입 메서드
     public boolean insertUser(UserDTO user) {
         String sql = "INSERT INTO users (id, password, lol_nickname_tag, site_nickname) VALUES (?, ?, ?, ?)";
-        try (Connection conn = getConnection();
+        try (Connection conn = DatabaseConnection.getConnection();
              PreparedStatement pstmt = conn.prepareStatement(sql)) {
             pstmt.setString(1, user.getId());
             pstmt.setString(2, user.getPassword());
@@ -43,15 +22,18 @@ public class UserDAO {
             return rowsAffected > 0; // 1 이상이면 삽입 성공, 아니면 실패
         } catch (SQLException e) {
             e.printStackTrace();
-
+            return false;
+        } catch (Exception e) {
+            e.printStackTrace();
             return false;
         }
     }
 
+    // 모든 회원 조회 메서드
     public List<UserDTO> getAllUsers() {
         String sql = "SELECT * FROM users";
         List<UserDTO> userList = new ArrayList<>();
-        try (Connection conn = getConnection();
+        try (Connection conn = DatabaseConnection.getConnection();
              PreparedStatement pstmt = conn.prepareStatement(sql);
              ResultSet rs = pstmt.executeQuery()) {
             while (rs.next()) {
@@ -64,13 +46,16 @@ public class UserDAO {
             }
         } catch (SQLException e) {
             e.printStackTrace();
+        } catch (Exception e) {
+            e.printStackTrace();
         }
         return userList;
     }
 
+    // 이메일 및 비밀번호로 회원 조회 (로그인)
     public UserDTO getUserByEmailAndPassword(String email, String password) {
         String sql = "SELECT * FROM users WHERE id = ? AND password = ?";
-        try (Connection conn = getConnection();
+        try (Connection conn = DatabaseConnection.getConnection();
              PreparedStatement pstmt = conn.prepareStatement(sql)) {
             pstmt.setString(1, email);
             pstmt.setString(2, password);
@@ -86,8 +71,9 @@ public class UserDAO {
             }
         } catch (SQLException e) {
             e.printStackTrace();
+        } catch (Exception e) {
+            e.printStackTrace();
         }
         return null; // 로그인 실패 시 null 반환
     }
-
 }

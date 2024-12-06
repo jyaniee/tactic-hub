@@ -1,4 +1,19 @@
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+<%@ page import="com.example.tactichub.dao.UserDAO" %>
+<%@ page import="com.example.tactichub.dto.UserDTO" %>
+<%@ page import="java.util.List" %>
+<%
+    // UserDAO를 사용하여 모든 회원 정보를 가져옴
+    UserDAO userDAO = new UserDAO();
+    List<UserDTO> users = null;
+
+    try {
+        users = userDAO.getAllUsers();
+    } catch (Exception e) {
+        e.printStackTrace();
+        out.println("<p>회원 정보를 불러오는 중 오류가 발생했습니다.</p>");
+    }
+%>
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -17,14 +32,54 @@
             display: block;
         }
     </style>
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            // 모든 데이터 행 선택
+            const clickableRows = document.querySelectorAll(".clickable-row");
+
+            clickableRows.forEach((row) => {
+                row.addEventListener("click", () => {
+                    // 클릭된 행 다음에 있는 드롭다운 행 선택
+                    const dropdownRow = row.nextElementSibling;
+
+                    // 드롭다운 행 표시/숨기기 토글
+                    if (dropdownRow.style.display === "none") {
+                        dropdownRow.style.display = "table-row";
+                    } else {
+                        dropdownRow.style.display = "none";
+                    }
+                });
+            });
+        });
+
+        document.addEventListener("DOMContentLoaded", () => {
+            // 모든 데이터 행 선택
+            const clickableRows = document.querySelectorAll(".clickable-row");
+
+            clickableRows.forEach((row) => {
+                row.addEventListener("click", () => {
+                    // 클릭된 행 다음에 있는 드롭다운 행 선택
+                    const dropdownRow = row.nextElementSibling;
+
+                    // 드롭다운 행 활성화/비활성화
+                    dropdownRow.classList.toggle("active");
+                });
+            });
+        });
+
+    </script>
+
 </head>
 <body class="m-0 vh-100 d-flex">
 <div class="sidebar vh-100 d-flex flex-column justify-between">
     <div>
         <h4 class="fw-bold mb-4 mt-2">관리자 페이지</h4>
-        <a href="#" class="menu-item active" data-target="dashboard"><img src="images/dashboard.png" class="me-2 pb-1" alt="dashboard" width="20px">대시보드</a>
-        <a href="#" class="menu-item" data-target="user-management"><img src="images/group-fill.png" class="me-2 pb-1" alt="user-management" width="20px">회원 관리</a>
-        <a href="#" class="menu-item" data-target="history"><img src="images/bookmark.png" class="me-2 pb-1" alt="history" width="20px">히스토리 조회</a>
+        <a href="#" class="menu-item active" data-target="dashboard"><img src="images/dashboard.png" class="me-2 pb-1"
+                                                                          alt="dashboard" width="20px">대시보드</a>
+        <a href="#" class="menu-item" data-target="user-management"><img src="images/group-fill.png" class="me-2 pb-1"
+                                                                         alt="user-management" width="20px">회원 관리</a>
+        <a href="#" class="menu-item" data-target="history"><img src="images/bookmark.png" class="me-2 pb-1"
+                                                                 alt="history" width="20px">히스토리 조회</a>
         <a href="#" class="menu-item" data-target="api-status"><img src="images/webhook.png" class="me-2 pb-1" alt="api-status" width="20px">API 연동 현황</a>
         <a href="#" class="menu-item" data-target="site-settings"><img src="images/settings.png" class="me-2 pb-1" alt="settings" width="20px">사이트 설정</a>
         <a href="logout.jsp"><img src="images/logout.png" class="me-2 pb-1" alt="logout" width="20px">로그아웃</a>
@@ -69,28 +124,52 @@
     <!-- 회원 관리 -->
     <div id="user-management" class="content-section">
         <h4 class="mb-4">회원 관리</h4>
-        <div class="card">
-            <table class="table table-striped">
-                <thead class="table-dark">
-                <tr>
-                    <th>#</th>
-                    <th>닉네임</th>
-                    <th>이메일</th>
-                    <th>가입일</th>
-                    <th>액션</th>
-                </tr>
-                </thead>
-                <tbody>
-                <tr>
-                    <td>1</td>
-                    <td>홍길동</td>
-                    <td>hong@example.com</td>
-                    <td>2024-11-01</td>
-                    <td><button class="btn btn-danger btn-sm">삭제</button></td>
-                </tr>
-                </tbody>
-            </table>
+        <div>
+            <div class="table-responsive custom-table-responsive">
+                <a class="text-end refresh-button"><img src="images/refresh.png" alt="refresh" width="50px"></a>
+                <table class="table custom-table">
+                    <thead>
+                    <tr>
+                        <th scope="col">아이디</th>
+                        <th scope="col">패스워드</th>
+                        <th scope="col">LOL 닉네임</th>
+                        <th scope="col">사이트 닉네임</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <%
+                        if (users == null || users.isEmpty()) {
+                    %>
+                    <tr>
+                        <td colspan="5" class="text-center">회원 정보가 없습니다.</td>
+                    </tr>
+                    <%
+                    } else {
+                        for (UserDTO user : users) {
+                    %>
+                    <tr class="clickable-row" style="cursor: pointer;">
+                        <td><%= user.getId() %></td>
+                        <td><%= user.getPassword() %></td>
+                        <td><%= user.getLolNicknameTag() %></td>
+                        <td><%= user.getSiteNickname() %></td>
+                    </tr>
+                    <tr class="dropdown-row" style="display: none;">
+                        <td colspan="5" class="text-end">
+                            <button class="btn btn-success btn-sm">정보 수정</button>
+                            <button class="btn btn-danger btn-sm">회원 삭제</button>
+                        </td>
+                    </tr>
+                    <tr class="spacer"><td colspan="100"></td></tr>
+                    <%
+                            }
+                        }
+                    %>
+                    </tbody>
+                </table>
+            </div>
+
         </div>
+
 
     </div>
     <!-- 히스토리 조회 -->
