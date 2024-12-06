@@ -1,0 +1,157 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100..900&display=swap');
+
+@font-face {
+    font-family: 'Apple SD Gothic Neo';
+    src: url('../assets/fonts/AppleSDGothicNeo/AppleSDGothicNeoB.ttf') format('truetype');
+    font-weight: bold;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Apple SD Gothic Neo';
+    src: url('../assets/fonts/AppleSDGothicNeo/AppleSDGothicNeoEB.ttf') format('truetype');
+    font-weight: 800;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Apple SD Gothic Neo';
+    src: url('../assets/fonts/AppleSDGothicNeo/AppleSDGothicNeoH.ttf') format('truetype');
+    font-weight: 700;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Apple SD Gothic Neo';
+    src: url('../assets/fonts/AppleSDGothicNeo/AppleSDGothicNeoL.ttf') format('truetype');
+    font-weight: 300;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Apple SD Gothic Neo';
+    src: url('../assets/fonts/AppleSDGothicNeo/AppleSDGothicNeoM.ttf') format('truetype');
+    font-weight: 500;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Apple SD Gothic Neo';
+    src: url('../assets/fonts/AppleSDGothicNeo/AppleSDGothicNeoR.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Apple SD Gothic Neo';
+    src: url('../assets/fonts/AppleSDGothicNeo/AppleSDGothicNeoSB.ttf') format('truetype');
+    font-weight: 600;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Apple SD Gothic Neo';
+    src: url('../assets/fonts/AppleSDGothicNeo/AppleSDGothicNeoT.ttf') format('truetype');
+    font-weight: 900;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Apple SD Gothic Neo';
+    src: url('../assets/fonts/AppleSDGothicNeo/AppleSDGothicNeoUL.ttf') format('truetype');
+    font-weight: 200;
+    font-style: normal;
+}
+
+:root {
+    --bs-body-font-family: 'Apple SD Gothic Neo', 'Noto Sans KR', sans-serif; !important;
+}
+
+body {
+    font-family: "Apple SD Gothic Neo", "Noto Sans KR", "sans-serif"; !important;
+    color: #e2e2e9;
+    background: white;
+    /*background-image: url("../images/ahri-chinese.jpg"); */
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.sidebar {
+    background: #111111;
+    padding: 20px;
+    min-width: 280px;
+    flex-shrink: 0;
+}
+.sidebar a {
+    font-weight: bold;
+    display: block;
+    text-decoration: none;
+    color: rgb(226,226,223);
+    margin-bottom: 10px;
+    padding: 10px 15px;
+    border-radius: 5px;
+    transition: background-color 0.2s ease;
+}
+.sidebar a:hover, .sidebar a.active {
+    background: #2b3035;
+    color: white;
+}
+
+
+.content {
+    flex-grow: 1;
+    padding: 20px;
+    overflow-y: auto;
+}
+.content-section {
+    margin: 20px auto;
+    max-width: 800px;
+    padding: 20px;
+}
+
+.card {
+    background: #111111;
+    border: none;
+    border-radius: 8px;
+    padding: 50px;
+    color: white;
+}
+
+.inner-card {
+
+}
+
+.content {
+    background-repeat: no-repeat;
+    background-size: cover
+}
+
+
+.sidebar a.logo {
+    margin: 0;
+    padding: 12px;
+    width: auto;
+    display: inline-block;
+    text-align: center;
+}
+
+.sidebar a.logo:hover {
+    background: #1a1d20;
+}
+
+.sidebar a.logo img {
+    display: block;
+    margin: 0 auto;
+}
+
+.sidebar a.admin {
+    background: rgba(58, 140, 255, 0.5);
+}
+.sidebar a.admin:hover {
+    background: rgba(58, 140, 255, 1);
+}
+
+.content-section h4 {
+    color: black;
+    font-weight: bold;
+}

@@ -1,5 +1,5 @@
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
-<!doctype html>
+<!DOCTYPE html>
 <html lang="ko">
 <head>
     <meta charset="UTF-8">
@@ -8,102 +8,68 @@
     <link rel="icon" type="image/png" href="images/TacticHub-Icon.png">
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/admin.css">
     <style>
-        body {
-            font-family: 'Apple SD Gothic Neo', 'Noto Sans KR', sans-serif;
-            background-color: #f8f9fa;
-            overflow: hidden; /* 스크롤 제거 */
-        }
-        .sidebar {
-            height: 100vh;
-            width: 250px;
-            background-color: #343a40;
-            position: fixed;
-            top: 0;
-            left: 0;
-            padding: 15px;
-            z-index: 1000;
-        }
-        .sidebar a {
-            color: white;
-            text-decoration: none;
-            font-size: 1.1rem;
-            margin-bottom: 10px;
-            display: block;
-        }
-        .sidebar a:hover,
-        .sidebar a.active {
-            background-color: #495057;
-            border-radius: 5px;
-            padding-left: 10px;
-        }
-        .content-container {
-            margin-left: 250px;
-            height: 100vh;
-            overflow: hidden;
-            position: relative;
-        }
-        .section {
-            height: 100%;
+        .content-section {
             display: none;
-            padding: 20px;
         }
-        .section.active {
+        .content-section.active {
             display: block;
-        }
-        .card {
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
         }
     </style>
 </head>
-<body>
-<div class="d-flex">
-    <!-- 사이드바 -->
-    <nav class="sidebar d-flex flex-column">
-        <h4 class="text-white text-center mb-4">관리자 페이지</h4>
-        <a href="#dashboard" class="menu-link active" data-section="dashboard">대시보드</a>
-        <a href="#user-management" class="menu-link" data-section="user-management">회원 관리</a>
-        <a href="#history" class="menu-link" data-section="history">히스토리 조회</a>
-        <a href="#api-status" class="menu-link" data-section="api-status">API 연동 현황</a>
-        <a href="#site-settings" class="menu-link" data-section="site-settings">사이트 설정</a>
-    </nav>
+<body class="m-0 vh-100 d-flex">
+<div class="sidebar vh-100 d-flex flex-column justify-between">
+    <div>
+        <h4 class="fw-bold mb-4 mt-2">관리자 페이지</h4>
+        <a href="#" class="menu-item active" data-target="dashboard"><img src="images/dashboard.png" class="me-2 pb-1" alt="dashboard" width="20px">대시보드</a>
+        <a href="#" class="menu-item" data-target="user-management"><img src="images/group-fill.png" class="me-2 pb-1" alt="user-management" width="20px">회원 관리</a>
+        <a href="#" class="menu-item" data-target="history"><img src="images/bookmark.png" class="me-2 pb-1" alt="history" width="20px">히스토리 조회</a>
+        <a href="#" class="menu-item" data-target="api-status"><img src="images/webhook.png" class="me-2 pb-1" alt="api-status" width="20px">API 연동 현황</a>
+        <a href="#" class="menu-item" data-target="site-settings"><img src="images/settings.png" class="me-2 pb-1" alt="settings" width="20px">사이트 설정</a>
+        <a href="logout.jsp"><img src="images/logout.png" class="me-2 pb-1" alt="logout" width="20px">로그아웃</a>
+    </div>
+    <div class="mt-auto text-center mb-3">
+        <a href="index.jsp" class="logo"><img src="images/TacticHub-Logo.png" alt="Footer Logo" style="width: 80px;"></a>
+        <p style="font-size: 12px; color: #818aaa; margin-bottom: 5px;">백엔드 실습 | 5조 | 김호겸, 문정헌, 심재한</p>
+    </div>
+</div>
 
-    <!-- 메인 컨텐츠 -->
-    <div class="content-container">
-        <!-- 대시보드 -->
-        <section id="dashboard" class="section active">
-            <h1 class="mb-4">대시보드</h1>
-            <div class="row">
-                <div class="col-md-4">
-                    <div class="card text-center">
-                        <div class="card-body">
-                            <h5 class="card-title">총 회원 수</h5>
-                            <p class="card-text fs-2">1,234</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="card text-center">
-                        <div class="card-body">
-                            <h5 class="card-title">오늘 팀 구성 요청</h5>
-                            <p class="card-text fs-2">56</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="card text-center">
-                        <div class="card-body">
-                            <h5 class="card-title">API 호출 성공률</h5>
-                            <p class="card-text fs-2">98%</p>
-                        </div>
+<div class="content">
+    <!-- 대시보드 -->
+    <div id="dashboard" class="content-section active">
+        <h4 class="mb-4">대시보드</h4>
+        <div class="row">
+            <div class="col-md-4">
+                <div class="card text-center">
+                    <div class="card-body">
+                        <h5 class="card-title">총 회원 수</h5>
+                        <p class="card-text fs-2">1,234</p>
                     </div>
                 </div>
             </div>
-        </section>
-
-        <!-- 회원 관리 -->
-        <section id="user-management" class="section">
-            <h1 class="mb-4">회원 관리</h1>
+            <div class="col-md-4">
+                <div class="card text-center">
+                    <div class="card-body">
+                        <h5 class="card-title">오늘 팀 구성 요청</h5>
+                        <p class="card-text fs-2">56</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card text-center">
+                    <div class="card-body">
+                        <h5 class="card-title">API 호출 성공률</h5>
+                        <p class="card-text fs-2">98%</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- 회원 관리 -->
+    <div id="user-management" class="content-section">
+        <h4 class="mb-4">회원 관리</h4>
+        <div class="card">
             <table class="table table-striped">
                 <thead class="table-dark">
                 <tr>
@@ -124,11 +90,13 @@
                 </tr>
                 </tbody>
             </table>
-        </section>
+        </div>
 
-        <!-- 히스토리 조회 -->
-        <section id="history" class="section">
-            <h1 class="mb-4">히스토리 조회</h1>
+    </div>
+    <!-- 히스토리 조회 -->
+    <div id="history" class="content-section">
+        <h4 class="mb-4">히스토리 조회</h4>
+        <div class="card">
             <p>특정 회원의 히스토리를 검색하세요.</p>
             <form>
                 <div class="input-group">
@@ -136,11 +104,12 @@
                     <button class="btn btn-primary" type="submit">검색</button>
                 </div>
             </form>
-        </section>
-
-        <!-- API 연동 현황 -->
-        <section id="api-status" class="section">
-            <h1 class="mb-4">API 연동 현황</h1>
+        </div>
+    </div>
+    <!-- API 연동 현황 -->
+    <div id="api-status" class="content-section">
+        <h4 class="mb-4">API 연동 현황</h4>
+        <div class="card">
             <table class="table table-striped">
                 <thead class="table-dark">
                 <tr>
@@ -158,49 +127,26 @@
                 </tbody>
             </table>
             <h2>Riot API 테스트</h2>
-            <!-- Riot API Key 설정 -->
-            <%
-                // 현재 API Key를 표시
-                String currentApiKey = (String) application.getAttribute("apiKey");
-                if (currentApiKey == null || currentApiKey.isEmpty()) {
-                    currentApiKey = "RGAPI-efdd7a01-a4b8-4f75-af75-a3f303bc1e82"; // 기본값
-                    application.setAttribute("apiKey", currentApiKey);
-                }
-            %>
-
-            <!-- 현재 API Key 표시 -->
-            <p>현재 설정된 API Key: <strong><%= currentApiKey %></strong></p>
-
-
+            <p>현재 설정된 API Key: <strong>RGAPI-efdd7a01-a4b8-4f75-af75-a3f303bc1e82</strong></p>
             <h3>API Key 설정</h3>
-            <!-- API Key 수정 -->
             <form method="post">
                 <label for="newApiKey" class="form-label">새 API Key 입력:</label>
                 <input type="text" id="newApiKey" name="apiKey" class="form-control" required>
                 <button type="submit" class="btn btn-primary mt-2">API Key 갱신</button>
             </form>
-            <%
-                // API Key 갱신 처리
-                String newApiKey = request.getParameter("apiKey");
-                if (newApiKey != null && !newApiKey.trim().isEmpty()) {
-                    application.setAttribute("apiKey", newApiKey);
-                    currentApiKey = newApiKey;
-                    out.println("<p class='text-success mt-3'>API Key가 갱신되었습니다: " + currentApiKey + "</p>");
-                }
-            %>
             <hr>
-
             <form method="post">
                 닉네임: <input type="text" name="gameName" required><br>
                 태그: <input type="text" name="tagLine" required><br>
                 <button type="submit">제출</button>
             </form>
-            <%@ include file="riotApiRs.jsp"%>
-        </section>
+        </div>
 
-        <!-- 사이트 설정 -->
-        <section id="site-settings" class="section">
-            <h1 class="mb-4">사이트 설정</h1>
+    </div>
+    <!-- 사이트 설정 -->
+    <div id="site-settings" class="content-section">
+        <h4 class="mb-4">사이트 설정</h4>
+        <div class="card">
             <form>
                 <div class="mb-3">
                     <label for="site-name" class="form-label">사이트 이름</label>
@@ -215,33 +161,39 @@
                 </div>
                 <button type="submit" class="btn btn-primary">저장</button>
             </form>
-        </section>
+        </div>
+
     </div>
 </div>
 
 <!-- JavaScript -->
 <script>
-    document.addEventListener("DOMContentLoaded", function () {
-        const links = document.querySelectorAll(".menu-link");
-        const sections = document.querySelectorAll(".section");
+    document.addEventListener("DOMContentLoaded", () => {
+        const menuItems = document.querySelectorAll('.menu-item');
+        const contentSections = document.querySelectorAll('.content-section');
 
-        links.forEach(link => {
-            link.addEventListener("click", (e) => {
+        menuItems.forEach(item => {
+            item.addEventListener('click', (e) => {
                 e.preventDefault();
 
-                // 모든 링크에서 활성화 제거
-                links.forEach(link => link.classList.remove("active"));
-                // 클릭된 링크 활성화
-                link.classList.add("active");
+                // 메뉴 활성화 처리
+                menuItems.forEach(i => i.classList.remove('active'));
+                item.classList.add('active');
 
-                // 모든 섹션 숨기기
-                sections.forEach(section => section.classList.remove("active"));
-                // 클릭된 섹션 표시
-                const targetSection = document.getElementById(link.dataset.section);
-                targetSection.classList.add("active");
+                // 컨텐츠 표시 처리
+                const targetId = item.getAttribute('data-target');
+                contentSections.forEach(section => {
+                    section.classList.remove('active');
+                    if (section.id === targetId) {
+                        section.classList.add('active');
+                    }
+                });
             });
         });
     });
 </script>
+
+<!-- Bootstrap JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
