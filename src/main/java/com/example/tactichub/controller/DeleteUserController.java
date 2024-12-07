@@ -19,14 +19,16 @@ public class DeleteUserController extends HttpServlet {
         // DAO를 사용하여 회원 삭제
         boolean isDeleted = userDAO.deleteUserById(userId);
 
+        // 성공 여부에 따라 메시지 설정
         if (isDeleted) {
-            resp.sendRedirect("admin.jsp?message=User deleted successfully");
-            System.out.println("User deleted successfully");
+            req.setAttribute("success", "회원이 성공적으로 삭제되었습니다.");
         } else {
-            System.err.println("User could not be deleted");
-            req.setAttribute("error", "Failed to delete user.");
-            RequestDispatcher dispatcher = req.getRequestDispatcher("admin.jsp");
-            dispatcher.forward(req, resp);
+            req.setAttribute("error", "회원 삭제에 실패했습니다.");
         }
+
+        // 회원 관리 페이지에 그대로 머무르도록 forward 호출
+        req.setAttribute("currentSection", "user-management");
+        RequestDispatcher dispatcher = req.getRequestDispatcher("admin.jsp");
+        dispatcher.forward(req, resp);
     }
 }

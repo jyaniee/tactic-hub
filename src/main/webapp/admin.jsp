@@ -107,6 +107,31 @@
             });
         });
 
+            document.addEventListener("DOMContentLoaded", () => {
+            const menuItems = document.querySelectorAll('.menu-item');
+            const contentSections = document.querySelectorAll('.content-section');
+
+            // 서버에서 전달된 현재 섹션 가져오기
+            const currentSection = "<%= request.getAttribute("currentSection") != null ? request.getAttribute("currentSection") : "dashboard" %>";
+
+            // 현재 섹션 활성화
+            menuItems.forEach(item => {
+            const targetId = item.getAttribute('data-target');
+            if (targetId === currentSection) {
+            item.classList.add('active');
+        } else {
+            item.classList.remove('active');
+        }
+        });
+
+            contentSections.forEach(section => {
+            if (section.id === currentSection) {
+            section.classList.add('active');
+        } else {
+            section.classList.remove('active');
+        }
+        });
+        });
     </script>
 
 </head>
@@ -196,10 +221,10 @@
                     <tr class="dropdown-row" style="display: none;">
                         <td colspan="5" class="text-end">
                             <div style="display: flex; justify-content: flex-end; gap: 10px;">
-                            <!-- "정보 수정" 버튼 -->
+                                <!-- "정보 수정" 버튼 -->
                                 <button class="btn btn-success btn-sm update">정보 수정</button>
 
-                            <!-- 드롭다운 영역 -->
+                                <!-- 드롭다운 영역 -->
                                 <div class="dropdown-content" style="display: none; margin-top: 10px;">
                                     <form action="<%= request.getContextPath() %>/updateUser" method="post">
                                         <input type="hidden" name="userId" value="<%= user.getId() %>"> <!-- 사용자 ID -->
@@ -220,7 +245,7 @@
 
                                 <!-- "회원 삭제" 버튼 -->
                                 <form action="<%= request.getContextPath() %>/deleteUser" method="post">
-                                <input type="hidden" name="userId" value="<%= user.getId() %>">
+                                    <input type="hidden" name="userId" value="<%= user.getId() %>">
                                     <button type="submit" class="btn btn-danger btn-sm delete">회원 삭제</button>
                                 </form>
                             </div>

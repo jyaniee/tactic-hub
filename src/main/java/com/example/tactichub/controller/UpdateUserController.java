@@ -32,6 +32,7 @@ public class UpdateUserController extends HttpServlet {
         }
 
         // 업데이트 후 admin.jsp로 포워딩
+        req.setAttribute("currentSection", "user-management");
         RequestDispatcher dispatcher = req.getRequestDispatcher("admin.jsp");
         dispatcher.forward(req, resp);
     }
