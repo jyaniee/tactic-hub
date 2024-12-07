@@ -191,6 +191,9 @@
     <a>본 페이지는 백엔드 실습 프로젝트입니다</a>.<a href="https://github.com/sim00507/tactic-hub/" class="text-white">@5조</a></a>
   </footer>
 </div>
+    <div class="d-flex gap-3 justify-content-center mt-3 mb-5">
+      <a href="exfront.jsp"><button class="btn fw-bold" id="calc" style="border-color: #adb5bd">팀 구성하기</button></a>
+    </div>
 <script src="assets/dist/js/bootstrap.bundle.min.js"></script>
 
     </body>

@@ -31,6 +31,18 @@
         .content-section.active {
             display: block;
         }
+        .dropdown-content {
+            display: none; /* 기본적으로 숨김 */
+            background-color: #f9f9f9;
+            border: 1px solid #ccc;
+            padding: 10px;
+            border-radius: 5px;
+            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+            position: absolute;
+            z-index: 1;
+            width: 300px; /* 드롭다운 너비 */
+        }
+
     </style>
     <script>
         document.addEventListener("DOMContentLoaded", () => {
@@ -63,6 +75,34 @@
 
                     // 드롭다운 행 활성화/비활성화
                     dropdownRow.classList.toggle("active");
+                });
+            });
+        });
+
+        document.addEventListener("DOMContentLoaded", () => {
+            // "정보 수정" 버튼 클릭 이벤트
+            const updateButtons = document.querySelectorAll(".update");
+
+            updateButtons.forEach((button) => {
+                button.addEventListener("click", () => {
+                    // 드롭다운 영역 선택
+                    const dropdownContent = button.nextElementSibling;
+
+                    // 드롭다운 표시/숨기기 토글
+                    if (dropdownContent.style.display === "none" || dropdownContent.style.display === "") {
+                        dropdownContent.style.display = "block";
+                    } else {
+                        dropdownContent.style.display = "none";
+                    }
+                });
+            });
+
+            // "취소" 버튼 클릭 시 드롭다운 숨기기
+            const cancelButtons = document.querySelectorAll(".cancel-button");
+            cancelButtons.forEach((button) => {
+                button.addEventListener("click", (event) => {
+                    const dropdownContent = event.target.closest(".dropdown-content");
+                    dropdownContent.style.display = "none";
                 });
             });
         });
@@ -155,8 +195,33 @@
                     </tr>
                     <tr class="dropdown-row" style="display: none;">
                         <td colspan="5" class="text-end">
-                            <button class="btn btn-success btn-sm">정보 수정</button>
-                            <button class="btn btn-danger btn-sm">회원 삭제</button>
+                            <div style="display: flex; justify-content: flex-end; gap: 10px;">
+                            <!-- "정보 수정" 버튼 -->
+                                <button class="btn btn-success btn-sm update">정보 수정</button>
+
+                            <!-- 드롭다운 영역 -->
+                                <div class="dropdown-content" style="display: none; margin-top: 10px;">
+                                    <form>
+                                        <div class="input-group mb-1">
+                                            <input type="text" class="form-control" name="password" placeholder="패스워드 수정" value="<%= user.getPassword() %>">
+                                        </div>
+                                        <div class="input-group mb-1">
+                                            <input type="text" class="form-control" name="lolNickname" placeholder="LOL 닉네임 수정" value="<%= user.getLolNicknameTag() %>">
+                                        </div>
+                                        <div class="input-group mb-1">
+                                            <input type="text" class="form-control" name="siteNickname" placeholder="사이트 닉네임 수정" value="<%= user.getSiteNickname() %>">
+                                        </div>
+                                        <button type="button" class="btn btn-success btn-sm save-button">저장</button>
+                                        <button type="button" class="btn btn-secondary btn-sm cancel-button">취소</button>
+                                    </form>
+                                </div>
+
+                                <!-- "회원 삭제" 버튼 -->
+                                <form action="<%= request.getContextPath() %>/deleteUser" method="post">
+                                <input type="hidden" name="userId" value="<%= user.getId() %>">
+                                    <button type="submit" class="btn btn-danger btn-sm delete">회원 삭제</button>
+                                </form>
+                            </div>
                         </td>
                     </tr>
                     <tr class="spacer"><td colspan="100"></td></tr>
@@ -165,6 +230,7 @@
                         }
                     %>
                     </tbody>
+
                 </table>
             </div>
 

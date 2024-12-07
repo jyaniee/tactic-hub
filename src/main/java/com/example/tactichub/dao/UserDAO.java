@@ -29,6 +29,34 @@ public class UserDAO {
         }
     }
 
+    // UserDAO 클래스
+    public boolean deleteUserById(String id) {
+        String sql = "DELETE FROM users WHERE id = ?";
+        try (Connection conn = DatabaseConnection.getConnection();
+             PreparedStatement pstmt = conn.prepareStatement(sql)) {
+            pstmt.setString(1, id);
+            int rowsAffected = pstmt.executeUpdate();
+            return rowsAffected > 0; // 삭제 성공 여부 반환
+        } catch (SQLException e) {
+            // SQL 관련 예외 처리
+            System.err.println("SQL 예외 발생: " + e.getMessage());
+            e.printStackTrace();
+            return false;
+        } catch (ClassNotFoundException e) {
+            // JDBC 드라이버 로드 실패 예외 처리
+            System.err.println("JDBC 드라이버를 로드하지 못했습니다: " + e.getMessage());
+            e.printStackTrace();
+            return false;
+        } catch (Exception e) {
+            // 기타 예외 처리
+            System.err.println("예상치 못한 예외 발생: " + e.getMessage());
+            e.printStackTrace();
+            return false;
+        }
+    }
+
+
+
     // 모든 회원 조회 메서드
     public List<UserDTO> getAllUsers() {
         String sql = "SELECT * FROM users";
