@@ -79,6 +79,30 @@ public class UserDAO {
         }
         return userList;
     }
+    public boolean updateUser(UserDTO user) {
+        String sql = "UPDATE users SET password = ?, lol_nickname_tag = ?, site_nickname = ? WHERE id = ?";
+        try (Connection conn = DatabaseConnection.getConnection();
+             PreparedStatement pstmt = conn.prepareStatement(sql)) {
+
+            pstmt.setString(1, user.getPassword());
+            pstmt.setString(2, user.getLolNicknameTag());
+            pstmt.setString(3, user.getSiteNickname());
+            pstmt.setString(4, user.getId());
+
+            int rowsAffected = pstmt.executeUpdate();
+            return rowsAffected > 0; // 1 이상의 결과라면 성공
+
+        } catch (SQLException e) {
+            System.err.println("SQL 예외 발생: " + e.getMessage());
+            e.printStackTrace();
+            return false;
+        } catch (Exception e) {
+            System.err.println("예기치 못한 예외 발생: " + e.getMessage());
+            e.printStackTrace();
+            return false;
+        }
+    }
+
 
     // 이메일 및 비밀번호로 회원 조회 (로그인)
     public UserDTO getUserByEmailAndPassword(String email, String password) {

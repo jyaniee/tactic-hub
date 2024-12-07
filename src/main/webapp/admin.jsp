@@ -201,7 +201,8 @@
 
                             <!-- 드롭다운 영역 -->
                                 <div class="dropdown-content" style="display: none; margin-top: 10px;">
-                                    <form>
+                                    <form action="<%= request.getContextPath() %>/updateUser" method="post">
+                                        <input type="hidden" name="userId" value="<%= user.getId() %>"> <!-- 사용자 ID -->
                                         <div class="input-group mb-1">
                                             <input type="text" class="form-control" name="password" placeholder="패스워드 수정" value="<%= user.getPassword() %>">
                                         </div>
@@ -211,9 +212,10 @@
                                         <div class="input-group mb-1">
                                             <input type="text" class="form-control" name="siteNickname" placeholder="사이트 닉네임 수정" value="<%= user.getSiteNickname() %>">
                                         </div>
-                                        <button type="button" class="btn btn-success btn-sm save-button">저장</button>
+                                        <button type="submit" class="btn btn-success btn-sm save-button">저장</button>
                                         <button type="button" class="btn btn-secondary btn-sm cancel-button">취소</button>
                                     </form>
+
                                 </div>
 
                                 <!-- "회원 삭제" 버튼 -->
