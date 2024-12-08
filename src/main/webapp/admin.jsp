@@ -46,92 +46,65 @@
     </style>
     <script>
         document.addEventListener("DOMContentLoaded", () => {
-            // 모든 데이터 행 선택
-            const clickableRows = document.querySelectorAll(".clickable-row");
+            const refreshButton = document.querySelector(".refresh-button");
 
-            clickableRows.forEach((row) => {
-                row.addEventListener("click", () => {
-                    // 클릭된 행 다음에 있는 드롭다운 행 선택
-                    const dropdownRow = row.nextElementSibling;
+            refreshButton.addEventListener("click", () => {
+                // AJAX 요청을 통해 회원 데이터를 가져옴
+                fetch("<%= request.getContextPath() %>/fetchUsers", {
+                    method: "GET"
+                })
+                    .then(response => response.text())
+                    .then(data => {
+                        // 서버로부터 받은 HTML을 테이블의 tbody에 삽입
+                        const userTableBody = document.querySelector(".custom-table tbody");
+                        userTableBody.innerHTML = data;
 
-                    // 드롭다운 행 표시/숨기기 토글
-                    if (dropdownRow.style.display === "none") {
-                        dropdownRow.style.display = "table-row";
-                    } else {
-                        dropdownRow.style.display = "none";
-                    }
-                });
+                        // 새로 추가된 버튼 및 행에 이벤트 리스너 다시 연결
+                        attachEventListeners();
+                    })
+                    .catch(error => {
+                        console.error("회원 데이터를 불러오는 중 오류 발생:", error);
+                    });
             });
-        });
 
-        document.addEventListener("DOMContentLoaded", () => {
-            // 모든 데이터 행 선택
-            const clickableRows = document.querySelectorAll(".clickable-row");
+            function attachEventListeners() {
+                // 행 클릭 이벤트
+                const clickableRows = document.querySelectorAll(".clickable-row");
 
-            clickableRows.forEach((row) => {
-                row.addEventListener("click", () => {
-                    // 클릭된 행 다음에 있는 드롭다운 행 선택
-                    const dropdownRow = row.nextElementSibling;
-
-                    // 드롭다운 행 활성화/비활성화
-                    dropdownRow.classList.toggle("active");
+                clickableRows.forEach((row) => {
+                    row.addEventListener("click", () => {
+                        const dropdownRow = row.nextElementSibling;
+                        dropdownRow.style.display = dropdownRow.style.display === "none" ? "table-row" : "none";
+                    });
                 });
-            });
-        });
 
-        document.addEventListener("DOMContentLoaded", () => {
-            // "정보 수정" 버튼 클릭 이벤트
-            const updateButtons = document.querySelectorAll(".update");
+                // 정보 수정 버튼 이벤트
+                const updateButtons = document.querySelectorAll(".update");
 
-            updateButtons.forEach((button) => {
-                button.addEventListener("click", () => {
-                    // 드롭다운 영역 선택
-                    const dropdownContent = button.nextElementSibling;
+                updateButtons.forEach((button) => {
+                    button.addEventListener("click", () => {
+                        const dropdownContent = button.nextElementSibling;
+                        dropdownContent.style.display = dropdownContent.style.display === "none" || dropdownContent.style.display === "" ? "block" : "none";
+                    });
+                });
 
-                    // 드롭다운 표시/숨기기 토글
-                    if (dropdownContent.style.display === "none" || dropdownContent.style.display === "") {
-                        dropdownContent.style.display = "block";
-                    } else {
+                // 취소 버튼 이벤트
+                const cancelButtons = document.querySelectorAll(".cancel-button");
+
+                cancelButtons.forEach((button) => {
+                    button.addEventListener("click", (event) => {
+                        const dropdownContent = event.target.closest(".dropdown-content");
                         dropdownContent.style.display = "none";
-                    }
+                    });
                 });
-            });
+            }
 
-            // "취소" 버튼 클릭 시 드롭다운 숨기기
-            const cancelButtons = document.querySelectorAll(".cancel-button");
-            cancelButtons.forEach((button) => {
-                button.addEventListener("click", (event) => {
-                    const dropdownContent = event.target.closest(".dropdown-content");
-                    dropdownContent.style.display = "none";
-                });
-            });
+            // 초기 로드 시 이벤트 리스너 연결
+            attachEventListeners();
         });
+        <!-- 기존 -->
 
-            document.addEventListener("DOMContentLoaded", () => {
-            const menuItems = document.querySelectorAll('.menu-item');
-            const contentSections = document.querySelectorAll('.content-section');
 
-            // 서버에서 전달된 현재 섹션 가져오기
-            const currentSection = "<%= request.getAttribute("currentSection") != null ? request.getAttribute("currentSection") : "dashboard" %>";
-
-            // 현재 섹션 활성화
-            menuItems.forEach(item => {
-            const targetId = item.getAttribute('data-target');
-            if (targetId === currentSection) {
-            item.classList.add('active');
-        } else {
-            item.classList.remove('active');
-        }
-        });
-
-            contentSections.forEach(section => {
-            if (section.id === currentSection) {
-            section.classList.add('active');
-        } else {
-            section.classList.remove('active');
-        }
-        });
-        });
     </script>
 
 </head>
@@ -344,25 +317,28 @@
         const menuItems = document.querySelectorAll('.menu-item');
         const contentSections = document.querySelectorAll('.content-section');
 
+        // 서버에서 전달된 현재 섹션 가져오기
+        const currentSection = "<%= request.getAttribute("currentSection") != null ? request.getAttribute("currentSection") : "dashboard" %>";
+
+        // 현재 섹션 활성화
         menuItems.forEach(item => {
-            item.addEventListener('click', (e) => {
-                e.preventDefault();
-
-                // 메뉴 활성화 처리
-                menuItems.forEach(i => i.classList.remove('active'));
+            const targetId = item.getAttribute('data-target');
+            if (targetId === currentSection) {
                 item.classList.add('active');
+            } else {
+                item.classList.remove('active');
+            }
+        });
 
-                // 컨텐츠 표시 처리
-                const targetId = item.getAttribute('data-target');
-                contentSections.forEach(section => {
-                    section.classList.remove('active');
-                    if (section.id === targetId) {
-                        section.classList.add('active');
-                    }
-                });
-            });
+        contentSections.forEach(section => {
+            if (section.id === currentSection) {
+                section.classList.add('active');
+            } else {
+                section.classList.remove('active');
+            }
         });
     });
+
 </script>
 
 <!-- Bootstrap JS -->
