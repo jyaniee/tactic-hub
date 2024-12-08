@@ -322,13 +322,19 @@
 
         // 현재 섹션 활성화
         menuItems.forEach(item => {
-            const targetId = item.getAttribute('data-target');
-            if (targetId === currentSection) {
+            item.addEventListener('click', () => {
+                const targetId = item.getAttribute('data-target');
+
+                // 모든 메뉴와 섹션에서 active 제거
+                menuItems.forEach(menu => menu.classList.remove('active'));
+                contentSections.forEach(section => section.classList.remove('active'));
+
+                // 클릭된 메뉴와 타겟 섹션에 active 추가
                 item.classList.add('active');
-            } else {
-                item.classList.remove('active');
-            }
+                document.getElementById(targetId).classList.add('active');
+            });
         });
+
 
         contentSections.forEach(section => {
             if (section.id === currentSection) {
