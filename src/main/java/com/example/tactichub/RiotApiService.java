@@ -10,7 +10,7 @@ import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
 
 public class RiotApiService {
-    private static final String API_KEY = "RGAPI-8c06f200-1627-4986-9592-50c91d7a510f";
+    private static final String API_KEY = "RGAPI-fb16e894-dae0-46cf-9fdb-9909c4e2d169";
 
     public static JSONObject getLeagueInfo(String gameName, String tagLine) throws Exception {
         // Step 1: PUUID 가져오기

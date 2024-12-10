@@ -47,7 +47,6 @@
   <div class="loading-animation" id="loading-animation">
     <div class="circular-loader"></div>
   </div>
-
   <!-- 블러 처리 없이 유지될 부분 -->
   <h1 class="mb-4 text-start" style="font-size: 28px">
     <img src="images/check_circle.png" alt="complete" width="50" height="50" style="filter: drop-shadow(1px 1px 1px rgba(0, 0, 0, 0.8));">
