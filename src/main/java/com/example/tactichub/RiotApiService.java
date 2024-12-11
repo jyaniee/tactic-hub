@@ -1,5 +1,6 @@
 package com.example.tactichub;
 
+import jakarta.servlet.annotation.WebServlet;
 import org.json.JSONArray;
 import org.json.JSONObject;
 import java.io.BufferedReader;
@@ -56,7 +57,7 @@ public class RiotApiService {
             }
         }
 
-        return selectedEntry;
+        return selectedEntry != null ? selectedEntry : new JSONObject().put("tier", "Unranked");
     }
 
 
@@ -91,4 +92,6 @@ public class RiotApiService {
             throw new Exception("API 요청 실패. 응답 코드: " + responseCode);
         }
     }
+
+
 }

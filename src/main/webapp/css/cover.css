@@ -109,8 +109,12 @@ h1 {
 
 .match-btn {
   font-size: 1rem;
+  transition: background-color 0.3s, color 0.3s, transform 0.3s;
 }
 
+.match-btn:hover {
+  transform: scale(1.05);
+}
 
 .lead a {
   mix-blend-mode: lighten;

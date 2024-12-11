@@ -8,24 +8,14 @@
   <link rel="icon" type="image/png" href="images/TacticHub-Icon.png">
   <!-- Bootstrap 및 공통 스타일 -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-  <link rel="stylesheet" href="css/main.css">
+  <link rel="stylesheet" href="css/memberVersion.css">
   <script src="assets/js/color-modes.js"></script>
-  <script src="js/main.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
   <script>
-    document.addEventListener("DOMContentLoaded", () => {
-      const rankButtons = document.querySelectorAll(".rank-icon button");
-
-      rankButtons.forEach((button) => {
-        button.addEventListener("click", () => {
-          // 모든 버튼의 active 상태 제거
-          rankButtons.forEach((btn) => btn.classList.remove("active"));
-          // 클릭한 버튼에 active 상태 추가
-          button.classList.add("active");
-        });
-      });
-    });
+    const contextPath = '<%= request.getContextPath() %>';
   </script>
+  <script src="js/memberVersion.js"></script>
+
   <style>
   </style>
 </head>
@@ -85,7 +75,7 @@
 </div>
 
 <!-- 푸터 -->
-<div class="container">
+<<div class="container">
   <footer class="d-flex flex-wrap justify-content-between align-items-center py-3 mt-4 border-top">
     <div class="col-md-4 d-flex align-items-center" style="width: 50%">
       <a href="/" class="mb-3 me-2 mb-md-0 text-body-secondary text-decoration-none lh-1">
@@ -100,7 +90,7 @@
       <li class="ms-3"><a class="text-body-secondary" href="#"><svg class="bi" width="24" height="24"><use xlink:href="#facebook"></use></svg></a></li>
     </ul>
   </footer>
-</div>
+</div>>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
