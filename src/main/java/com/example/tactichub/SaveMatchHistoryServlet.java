@@ -13,10 +13,14 @@ public class SaveMatchHistoryServlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        request.setCharacterEncoding("UTF-8");
         HttpSession session = request.getSession();
         String userId = (String) session.getAttribute("email");
         String team1 = request.getParameter("team1");
         String team2 = request.getParameter("team2");
+
+        System.out.println("Team 1: " + team1);
+        System.out.println("Team 2: " + team2);
 
         if (userId == null) {
             response.sendRedirect("login.jsp");
