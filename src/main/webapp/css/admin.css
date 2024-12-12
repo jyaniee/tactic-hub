@@ -1,0 +1,241 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100..900&display=swap');
+
+@font-face {
+    font-family: 'Apple SD Gothic Neo';
+    src: url('../assets/fonts/AppleSDGothicNeo/AppleSDGothicNeoB.ttf') format('truetype');
+    font-weight: bold;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Apple SD Gothic Neo';
+    src: url('../assets/fonts/AppleSDGothicNeo/AppleSDGothicNeoEB.ttf') format('truetype');
+    font-weight: 800;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Apple SD Gothic Neo';
+    src: url('../assets/fonts/AppleSDGothicNeo/AppleSDGothicNeoH.ttf') format('truetype');
+    font-weight: 700;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Apple SD Gothic Neo';
+    src: url('../assets/fonts/AppleSDGothicNeo/AppleSDGothicNeoL.ttf') format('truetype');
+    font-weight: 300;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Apple SD Gothic Neo';
+    src: url('../assets/fonts/AppleSDGothicNeo/AppleSDGothicNeoM.ttf') format('truetype');
+    font-weight: 500;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Apple SD Gothic Neo';
+    src: url('../assets/fonts/AppleSDGothicNeo/AppleSDGothicNeoR.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Apple SD Gothic Neo';
+    src: url('../assets/fonts/AppleSDGothicNeo/AppleSDGothicNeoSB.ttf') format('truetype');
+    font-weight: 600;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Apple SD Gothic Neo';
+    src: url('../assets/fonts/AppleSDGothicNeo/AppleSDGothicNeoT.ttf') format('truetype');
+    font-weight: 900;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Apple SD Gothic Neo';
+    src: url('../assets/fonts/AppleSDGothicNeo/AppleSDGothicNeoUL.ttf') format('truetype');
+    font-weight: 200;
+    font-style: normal;
+}
+
+:root {
+    --bs-body-font-family: 'Apple SD Gothic Neo', 'Noto Sans KR', sans-serif; !important;
+}
+
+body {
+    font-family: "Apple SD Gothic Neo", "Noto Sans KR", "sans-serif"; !important;
+    color: #e2e2e9;
+    background: white;
+    /*background-image: url("../images/ahri-chinese.jpg"); */
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.sidebar {
+    background: #111111;
+    padding: 20px;
+    min-width: 280px;
+    flex-shrink: 0;
+}
+.sidebar a {
+    font-weight: bold;
+    display: block;
+    text-decoration: none;
+    color: rgb(226,226,223);
+    margin-bottom: 10px;
+    padding: 10px 15px;
+    border-radius: 5px;
+    transition: background-color 0.2s ease;
+}
+.sidebar a:hover, .sidebar a.active {
+    background: #2b3035;
+    color: white;
+}
+
+
+.content {
+    flex-grow: 1;
+    padding: 20px;
+    overflow-y: auto;
+}
+.content-section {
+    margin: 20px auto;
+    max-width: 1000px;
+}
+
+.card {
+    background: #111111;
+    border: none;
+    border-radius: 8px;
+    padding: 50px;
+    color: white;
+}
+
+.inner-card {
+
+}
+
+.content {
+    background-repeat: no-repeat;
+    background-size: cover
+}
+
+
+.sidebar a.logo {
+    margin: 0;
+    padding: 12px;
+    width: auto;
+    display: inline-block;
+    text-align: center;
+}
+
+.sidebar a.logo:hover {
+    background: #1a1d20;
+}
+
+.sidebar a.logo img {
+    display: block;
+    margin: 0 auto;
+}
+
+.sidebar a.admin {
+    background: rgba(58, 140, 255, 0.5);
+}
+.sidebar a.admin:hover {
+    background: rgba(58, 140, 255, 1);
+}
+
+.content-section h4 {
+    color: black;
+    font-weight: bold;
+}
+
+
+/* 테이블 */
+
+.custom-table-responsive {
+    background-color: #111111;
+    padding: 20px;
+    border-radius: 4px;
+}
+
+.custom-table {
+    min-width: 900px;
+}
+
+.custom-table thead tr,
+.custom-table thead th {
+    border-top: none;
+    border-bottom: none !important;
+    text-transform: uppercase;
+    background-color: #111111;
+    color: white;
+}
+
+.custom-table tbody th,
+.custom-table tbody td {
+    color: #777;
+    font-weight: 400;
+    padding-bottom: 20px;
+    padding-top: 20px;
+    background: #fff;
+    border: none;
+}
+
+.custom-table tbody th small,
+.custom-table tbody td small {
+    color: #b3b3b3;
+    font-weight: 300;
+}
+
+
+
+.custom-table tbody tr.spacer td {
+    padding: 0 !important;
+    height: 10px;
+    border-radius: 0 !important;
+    background: transparent !important;
+}
+
+.dropdown-row {
+    background-color: #f8f9fa !important;
+    font-size: 14px;
+    border-top: 2px solid #dee2e6;
+    color: #6c757d;
+}
+
+.dropdown-row td {
+    padding-bottom: 5px !important;
+    padding-top: 5px !important;
+}
+
+/* 테이블 hover 효과 */
+
+.custom-table tbody tr:hover td {
+    transition: background-color 0.3s ease !important;
+}
+
+
+.custom-table tbody tr:hover:not(.dropdown-row) {
+    cursor: pointer;
+}
+
+.custom-table tbody tr:hover:not(.dropdown-row) td {
+    background: #b5b5b5;
+}
+
+/* 새로고침 버튼 */
+.refresh-button {
+    display: inline-block;
+    transition: transform 0.6s ease; /* 부드러운 회전 효과 */
+}
+
+/* hover 상태에서 회전 */
+.refresh-button:hover {
+    transform: rotate(360deg); /* 360도 회전 */
+}

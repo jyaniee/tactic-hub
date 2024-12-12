@@ -47,7 +47,6 @@
   <div class="loading-animation" id="loading-animation">
     <div class="circular-loader"></div>
   </div>
-
   <!-- 블러 처리 없이 유지될 부분 -->
   <h1 class="mb-4 text-start" style="font-size: 28px">
     <img src="images/check_circle.png" alt="complete" width="50" height="50" style="filter: drop-shadow(1px 1px 1px rgba(0, 0, 0, 0.8));">
@@ -91,9 +90,20 @@
       </div>
     </div>
   </div>
+  <%
+    // Referer 헤더를 가져옴
+    String referer = request.getHeader("Referer");
+
+    // Referer가 null이거나 허용되지 않은 값일 경우 기본값으로 main.jsp를 설정
+    String backPage = "main.jsp";
+    if (referer != null && (referer.contains("main.jsp") || referer.contains("memberVersion.jsp"))) {
+      backPage = referer; // Referer를 사용
+    }
+  %>
+
   <!-- 다시 구성하기 -->
   <div class="d-flex gap-3 justify-content-center mt-5">
-    <a href="main.jsp"><button class="btn fw-bold" id="calc" style="border-color: #adb5bd">다시 구성하기</button></a>
+    <a href="<%= backPage %>"><button class="btn fw-bold" id="calc" style="border-color: #adb5bd">다시 구성하기</button></a>
   </div>
 </div>
 

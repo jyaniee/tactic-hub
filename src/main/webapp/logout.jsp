@@ -3,4 +3,6 @@
     session.invalidate(); //세션을 완전히 종료
 
     response.sendRedirect("index.jsp");
+
+    System.out.println("Logged out.");
 %>
