@@ -90,6 +90,16 @@
       </div>
     </div>
   </div>
+
+  <!-- 숨겨진 필드와 저장 버튼 -->
+  <form action="saveMatchHistory" method="post">
+    <input type="hidden" id="hidden-team1" name="team1">
+    <input type="hidden" id="hidden-team2" name="team2">
+    <div class="d-flex justify-content-center mt-4">
+      <button type="submit" class="btn btn-primary">저장하기</button>
+    </div>
+  </form>
+
   <%
     // Referer 헤더를 가져옴
     String referer = request.getHeader("Referer");
@@ -106,7 +116,6 @@
     <a href="<%= backPage %>"><button class="btn fw-bold" id="calc" style="border-color: #adb5bd">다시 구성하기</button></a>
   </div>
 </div>
-
 
 <!-- 푸터
 <div class="container">

@@ -1,5 +1,8 @@
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ page import="org.json.JSONObject" %>
+<%@ page import="com.example.tactichub.dao.MatchHistoryDAO" %>
+<%@ page import="com.example.tactichub.dto.MatchHistoryDTO" %>
+<%@ page import="java.util.List" %>
 <%
     // 세션에서 데이터 읽기
     session = request.getSession();
@@ -12,6 +15,13 @@
     int lp = rankInfo != null ? rankInfo.optInt("leaguePoints", 0) : 0;
     int wins = rankInfo != null ? rankInfo.optInt("wins", 0) : 0;
     int losses = rankInfo != null ? rankInfo.optInt("losses", 0) : 0;
+
+    // 사용자 ID 확인
+    String userId = (String) session.getAttribute("email"); // 세션에서 사용자 이메일 가져오기
+
+    // 매치 히스토리 가져오기
+    MatchHistoryDAO matchHistoryDAO = new MatchHistoryDAO();
+    List<MatchHistoryDTO> matchHistoryList = matchHistoryDAO.getMatchHistoryByUser(userId);
 %>
 <!DOCTYPE html>
 <html lang="ko">
@@ -133,17 +143,48 @@
         </div>
     </div>
 
-    <!-- 매치 히스토리 -->
-    <div id="content-2" class="content-section" style="display: none;">
-        <h3 class="fw-bold">매치 히스토리</h3>
-        <div class="card">
-            <p class="card-title fw-bold">저장된 팀 구성 기록</p>
-            <div class="card border-0 inner-card">
-                기록
-            </div>
-        </div>
-    </div>
-</div>
+   <!-- 매치 히스토리 -->
+       <div id="content-2" class="content-section" style="display: none;">
+           <h3 class="fw-bold">매치 히스토리</h3>
+           <div class="card">
+               <p class="card-title fw-bold">저장된 팀 구성 기록</p>
+               <div class="table-responsive">
+                   <table class="table table-striped">
+                       <thead>
+                           <tr>
+                               <th>#</th>
+                               <th>팀 1</th>
+                               <th>팀 2</th>
+                               <th>저장 시각</th>
+                           </tr>
+                       </thead>
+                       <tbody>
+                           <%
+                               int count = 1;
+                               for (MatchHistoryDTO history : matchHistoryList) {
+                           %>
+                           <tr>
+                               <td><%= count++ %></td>
+                               <td><%= history.getTeam1() %></td>
+                               <td><%= history.getTeam2() %></td>
+                               <td><%= history.getCreatedAt() %></td>
+                           </tr>
+                           <%
+                               }
+                               if (matchHistoryList.isEmpty()) {
+                           %>
+                           <tr>
+                               <td colspan="4" class="text-center">저장된 기록이 없습니다.</td>
+                           </tr>
+                           <%
+                               }
+                           %>
+                       </tbody>
+                   </table>
+               </div>
+           </div>
+       </div>
+   </div>
 
 <!-- Bootstrap JS -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>

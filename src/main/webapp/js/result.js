@@ -5,7 +5,8 @@ document.addEventListener("DOMContentLoaded", function () {
     const loadingAnimation = document.getElementById("loading-animation");
     const team1Container = document.getElementById("team1-players");
     const team2Container = document.getElementById("team2-players");
-
+    const hiddenTeam1 = document.getElementById("hidden-team1");
+    const hiddenTeam2 = document.getElementById("hidden-team2");
 
     if (!team1 || !team2) {
         alert("팀 구성 데이터가 없습니다.");
@@ -45,15 +46,32 @@ document.addEventListener("DOMContentLoaded", function () {
     // 점수 차이 계산
     const scoreDifference = Math.abs(team1Score - team2Score);
 
-    // 팀1 데이터 포맷팅
+    // 팀 1 데이터 표시 및 숨겨진 필드 설정
     const team1Data = team1
         .map(player => `${player.name} (${player.rank}-${player.tier})`)
         .join(", ");
+    hiddenTeam1.value = team1Data;
 
-    // 팀2 데이터 포맷팅
+    team1.forEach((player, index) => {
+        const input = team1Container.querySelectorAll("input")[index];
+        if (input) {
+            input.value = `${player.name} (${player.rank}-${player.tier})`;
+        }
+    });
+
+    // 팀 2 데이터 표시 및 숨겨진 필드 설정
     const team2Data = team2
         .map(player => `${player.name} (${player.rank}-${player.tier})`)
         .join(", ");
+    hiddenTeam2.value = team2Data;
+
+    team2.forEach((player, index) => {
+        const input = team2Container.querySelectorAll("input")[index];
+        if (input) {
+            input.value = `${player.name} (${player.rank}-${player.tier})`;
+        }
+    });
+
 
     // 콘솔에 출력
     console.log(`Team 1 Score: ${team1Score}`);
