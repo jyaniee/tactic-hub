@@ -1,6 +1,8 @@
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ page import="com.example.tactichub.dao.UserDAO" %>
 <%@ page import="com.example.tactichub.dto.UserDTO" %>
+<%@ page import="com.example.tactichub.dao.MatchHistoryDAO" %>
+<%@ page import="com.example.tactichub.dto.MatchHistoryDTO" %>
 <%@ page import="java.util.List" %>
 <%
     // UserDAO를 사용하여 모든 회원 정보를 가져옴
@@ -14,6 +16,21 @@
         out.println("<p>회원 정보를 불러오는 중 오류가 발생했습니다.</p>");
     }
 %>
+<%
+    // 검색 결과 저장 변수
+    String searchUserId = request.getParameter("searchUserId");
+    List<MatchHistoryDTO> matchHistoryList = null;
+
+    if (searchUserId != null && !searchUserId.isEmpty()) {
+        MatchHistoryDAO matchHistoryDAO = new MatchHistoryDAO();
+        try {
+            matchHistoryList = matchHistoryDAO.getMatchHistoryByUser(searchUserId);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+%>
+
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -238,19 +255,57 @@
 
 
     </div>
+
+<div class="content">
     <!-- 히스토리 조회 -->
-    <div id="history" class="content-section">
+    <div id="history" class="content-section active">
         <h4 class="mb-4">히스토리 조회</h4>
-        <div class="card">
-            <p>특정 회원의 히스토리를 검색하세요.</p>
-            <form>
-                <div class="input-group">
-                    <input type="text" class="form-control" placeholder="회원 닉네임">
+        <div class="card mb-4">
+            <form method="get">
+                <div class="input-group mb-3">
+                    <input type="text" name="searchUserId" class="form-control" placeholder="회원 ID를 입력하세요" value="<%= searchUserId != null ? searchUserId : "" %>">
                     <button class="btn btn-primary" type="submit">검색</button>
                 </div>
             </form>
         </div>
+
+        <% if (searchUserId != null && !searchUserId.isEmpty()) { %>
+        <div class="card">
+            <h5 class="card-header">검색 결과: <%= searchUserId %></h5>
+            <div class="table-responsive">
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>팀 1</th>
+                            <th>팀 2</th>
+                            <th>저장 시각</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <% if (matchHistoryList != null && !matchHistoryList.isEmpty()) { %>
+                            <% int count = 1; %>
+                            <% for (MatchHistoryDTO history : matchHistoryList) { %>
+                            <tr>
+                                <td><%= count++ %></td>
+                                <td><%= history.getTeam1() %></td>
+                                <td><%= history.getTeam2() %></td>
+                                <td><%= history.getCreatedAt() %></td>
+                            </tr>
+                            <% } %>
+                        <% } else { %>
+                        <tr>
+                            <td colspan="4" class="text-center">검색 결과가 없습니다.</td>
+                        </tr>
+                        <% } %>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <% } %>
     </div>
+</div>
+
     <!-- API 연동 현황 -->
     <div id="api-status" class="content-section">
         <h4 class="mb-4">API 연동 현황</h4>
