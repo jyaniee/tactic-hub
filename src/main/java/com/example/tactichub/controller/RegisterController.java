@@ -19,6 +19,7 @@ public class RegisterController extends HttpServlet {
         String password = req.getParameter("password");
         String passwordConfirm = req.getParameter("password-confirm");
         String summoner = req.getParameter("summoner");
+        String nickname = req.getParameter("nickname");
 
         // 비밀번호 확인 검증
         if (!password.equals(passwordConfirm)) {
@@ -29,7 +30,7 @@ public class RegisterController extends HttpServlet {
         }
 
         // UserDTO 생성
-        UserDTO user = new UserDTO(id, password, summoner, summoner); // siteNickname 임시로 summoner와 동일
+        UserDTO user = new UserDTO(id, password, summoner, nickname); // siteNickname 임시로 summoner와 동일
 
         // DB에 저장
         boolean isRegistered = userDAO.insertUser(user);
