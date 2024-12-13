@@ -140,9 +140,16 @@
   </form>
 
   <!-- 저장하기 버튼과 다시 구성하기 버튼 -->
+
   <div class="d-flex gap-3 justify-content-center mt-5">
     <a href="<%= backPage %>"><button class="btn fw-bold" id="calc" style="border-color: #adb5bd;">다시 구성하기</button></a>
+    <%
+      if(isLoggedIn){
+    %>
     <button type="button" id="saveButton" class="btn fw-bold" style="border-color: #adb5bd;">결과 저장하기</button>
+    <%
+      }
+    %>
   </div>
 
 </div>
