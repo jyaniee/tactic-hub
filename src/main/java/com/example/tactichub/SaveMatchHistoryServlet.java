@@ -6,6 +6,8 @@ import jakarta.servlet.*;
 import jakarta.servlet.http.*;
 import jakarta.servlet.annotation.*;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 @WebServlet("/saveMatchHistory")
 public class SaveMatchHistoryServlet extends HttpServlet {
@@ -16,24 +18,38 @@ public class SaveMatchHistoryServlet extends HttpServlet {
         request.setCharacterEncoding("UTF-8");
         HttpSession session = request.getSession();
         String userId = (String) session.getAttribute("email");
-        String team1 = request.getParameter("team1");
-        String team2 = request.getParameter("team2");
+        String team1Data = request.getParameter("team1"); // "player1 (rank), player2 (rank)"
+        String team2Data = request.getParameter("team2");
 
-        System.out.println("Team 1: " + team1);
-        System.out.println("Team 2: " + team2);
+        response.setContentType("text/plain; charset=UTF-8"); // 또는 "application/json; charset=UTF-8" 사용 가능
 
         if (userId == null) {
             response.sendRedirect("login.jsp");
             return;
         }
 
-        MatchHistoryDTO matchHistory = new MatchHistoryDTO(0, userId, team1, team2, null);
-        boolean isSaved = matchHistoryDAO.saveMatchHistory(matchHistory);
+        List<MatchHistoryDTO> matchHistories = new ArrayList<>();
+        processTeamData(team1Data, 1, userId, matchHistories); // 팀 1 저장
+        processTeamData(team2Data, 2, userId, matchHistories); // 팀 2 저장
 
+        boolean isSaved = matchHistoryDAO.saveMatchHistory(matchHistories);
         if (isSaved) {
-            response.sendRedirect("mypage.jsp?success=true");
+            response.setStatus(HttpServletResponse.SC_OK); // 성공 상태 코드 반환
+            response.getWriter().write("Success");
+
         } else {
-            response.sendRedirect("result.jsp?error=true");
+            response.setStatus(HttpServletResponse.SC_INTERNAL_SERVER_ERROR); // 실패 상태 코드 반환
+            response.getWriter().write("Error");
+        }
+    }
+
+    private void processTeamData(String teamData, int teamNumber, String userId, List<MatchHistoryDTO> matchHistories) {
+        String[] players = teamData.split(", ");
+        for (String player : players) {
+            String[] details = player.split(" \\("); // 이름과 랭크 구분
+            String playerName = details[0];
+            String rank = details[1].replace(")", ""); // 괄호 제거
+            matchHistories.add(new MatchHistoryDTO(0, userId, teamNumber, playerName, rank, null));
         }
     }
 }

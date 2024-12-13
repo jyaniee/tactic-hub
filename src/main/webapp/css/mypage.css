@@ -105,6 +105,10 @@ body {
     padding: 20px;
 }
 
+.match-history {
+    max-width: 1000px !important;
+}
+
 .card {
     background: linear-gradient(to bottom, rgba(26, 41, 74, 0.4), #000914);
     border: none;
@@ -165,14 +169,24 @@ body {
     text-align: center;
     padding: 12px;
     border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    border-right: 1px solid rgba(255, 255, 255, 0.2); /* 열 구분선 */
+}
+
+.table th:last-child {
+    border-right: none; /* 마지막 열의 구분선을 제거 */
 }
 
 .table td {
     background: rgba(255, 255, 255, 0.05);
     color: white;
-    text-align: center;
+    text-align: left;
     padding: 12px;
     border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    border-right: 1px solid rgba(255, 255, 255, 0.1); /* 열 구분선 */
+}
+
+.table td:last-child {
+    border-right: none; /* 마지막 열의 구분선을 제거 */
 }
 
 .table tr:hover {

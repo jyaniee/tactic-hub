@@ -3,6 +3,9 @@
 <%@ page import="com.example.tactichub.dao.MatchHistoryDAO" %>
 <%@ page import="com.example.tactichub.dto.MatchHistoryDTO" %>
 <%@ page import="java.util.List" %>
+<%@ page import="java.util.LinkedHashMap" %>
+<%@ page import="java.util.Map" %>
+<%@ page import="java.util.ArrayList" %>
 <%
     // 세션에서 데이터 읽기
     session = request.getSession();
@@ -22,6 +25,14 @@
     // 매치 히스토리 가져오기
     MatchHistoryDAO matchHistoryDAO = new MatchHistoryDAO();
     List<MatchHistoryDTO> matchHistoryList = matchHistoryDAO.getMatchHistoryByUser(userId);
+
+    // 팀별로 데이터 분리
+    Map<String, List<MatchHistoryDTO>> matchGroups = new LinkedHashMap<>();
+    for (MatchHistoryDTO match : matchHistoryList) {
+        String key = match.getCreatedAt(); // 저장된 시간 기준으로 그룹화
+        matchGroups.putIfAbsent(key, new ArrayList<>());
+        matchGroups.get(key).add(match);
+    }
 %>
 <!DOCTYPE html>
 <html lang="ko">
@@ -92,7 +103,6 @@
                     </div>
                 </div>
                 <!-- Rank Info -->
-                <!-- Rank Info -->
                 <div class="col-md-6">
                     <div class="card inner-card">
                         <div>
@@ -144,7 +154,7 @@
     </div>
 
    <!-- 매치 히스토리 -->
-       <div id="content-2" class="content-section" style="display: none;">
+       <div id="content-2" class="content-section match-history" style="display: none;">
            <h3 class="fw-bold">매치 히스토리</h3>
            <div class="card">
                <p class="card-title fw-bold">저장된 팀 구성 기록</p>
@@ -159,26 +169,48 @@
                            </tr>
                        </thead>
                        <tbody>
-                           <%
-                               int count = 1;
-                               for (MatchHistoryDTO history : matchHistoryList) {
-                           %>
-                           <tr>
-                               <td><%= count++ %></td>
-                               <td><%= history.getTeam1() %></td>
-                               <td><%= history.getTeam2() %></td>
-                               <td><%= history.getCreatedAt() %></td>
-                           </tr>
-                           <%
+                       <%
+                           int count = 1;
+                           for (Map.Entry<String, List<MatchHistoryDTO>> entry : matchGroups.entrySet()) {
+                               String createdAt = entry.getKey();
+                               List<MatchHistoryDTO> matches = entry.getValue();
+
+                               // 팀 1과 팀 2 분리
+                               List<String> team1Players = new ArrayList<>();
+                               List<String> team2Players = new ArrayList<>();
+
+                               for (MatchHistoryDTO match : matches) {
+                                   if (match.getTeam() == 1) {
+                                       team1Players.add(match.getPlayerName() + " (" + match.getPlayerRank() + ")");
+                                   } else if (match.getTeam() == 2) {
+                                       team2Players.add(match.getPlayerName() + " (" + match.getPlayerRank() + ")");
+                                   }
                                }
-                               if (matchHistoryList.isEmpty()) {
-                           %>
-                           <tr>
-                               <td colspan="4" class="text-center">저장된 기록이 없습니다.</td>
-                           </tr>
-                           <%
-                               }
-                           %>
+                       %>
+                       <tr>
+                           <td><%= count++ %></td>
+                           <td>
+                               <% for (String player : team1Players) { %>
+                               <div><%= player %></div>
+                               <% } %>
+                           </td>
+                           <td>
+                               <% for (String player : team2Players) { %>
+                               <div><%= player %></div>
+                               <% } %>
+                           </td>
+                           <td><%= createdAt %></td>
+                       </tr>
+                       <%
+                           }
+                           if (matchGroups.isEmpty()) {
+                       %>
+                       <tr>
+                           <td colspan="4" class="text-center">저장된 기록이 없습니다.</td>
+                       </tr>
+                       <%
+                           }
+                       %>
                        </tbody>
                    </table>
                </div>

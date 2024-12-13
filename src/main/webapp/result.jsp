@@ -9,10 +9,39 @@
   <!-- Bootstrap 및 공통 스타일 -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
   <link rel="stylesheet" href="css/result.css">
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
   <script src="assets/js/color-modes.js"></script>
   <script src="js/result.js"></script>
   <script>
+    $(document).ready(function () {
+      $("#saveButton").on("click", function (e) {
+        e.preventDefault(); // 기본 동작 막기
 
+        // AJAX 요청
+        $.ajax({
+          url: "saveMatchHistory",
+          type: "POST",
+          data: {
+            team1: $("#hidden-team1").val(),
+            team2: $("#hidden-team2").val(),
+          },
+          success: function () {
+            $(".alert-container").html(`
+            <div class="alert alert-success text-center mt-4" role="alert">
+              팀 매칭 기록이 성공적으로 저장되었습니다!
+            </div>
+          `);
+          },
+          error: function () {
+            $(".alert-container").html(`
+            <div class="alert alert-danger text-center mt-4" role="alert">
+              팀 매칭 기록 저장 중 오류가 발생했습니다. 다시 시도해주세요.
+            </div>
+          `);
+          },
+        });
+      });
+    });
   </script>
   <style>
   </style>
@@ -91,14 +120,7 @@
     </div>
   </div>
 
-  <!-- 숨겨진 필드와 저장 버튼 -->
-  <form action="saveMatchHistory" method="post">
-    <input type="hidden" id="hidden-team1" name="team1">
-    <input type="hidden" id="hidden-team2" name="team2">
-    <div class="d-flex justify-content-center mt-4">
-      <button type="submit" class="btn btn-primary">저장하기</button>
-    </div>
-  </form>
+  <div class="alert-container"></div>
 
   <%
     // Referer 헤더를 가져옴
@@ -111,30 +133,20 @@
     }
   %>
 
-  <!-- 다시 구성하기 -->
+  <!-- 숨겨진 필드 -->
+  <form id="saveMatchForm">
+    <input type="hidden" id="hidden-team1" name="team1">
+    <input type="hidden" id="hidden-team2" name="team2">
+  </form>
+
+  <!-- 저장하기 버튼과 다시 구성하기 버튼 -->
   <div class="d-flex gap-3 justify-content-center mt-5">
-    <a href="<%= backPage %>"><button class="btn fw-bold" id="calc" style="border-color: #adb5bd">다시 구성하기</button></a>
+    <a href="<%= backPage %>"><button class="btn fw-bold" id="calc" style="border-color: #adb5bd;">다시 구성하기</button></a>
+    <button type="button" id="saveButton" class="btn fw-bold" style="border-color: #adb5bd;">결과 저장하기</button>
   </div>
+
 </div>
 
-<!-- 푸터
-<div class="container">
-  <footer class="d-flex flex-wrap justify-content-between align-items-center py-3 mt-4 border-top">
-    <div class="col-md-4 d-flex align-items-center" style="width: 50%">
-      <a href="/" class="mb-3 me-2 mb-md-0 text-body-secondary text-decoration-none lh-1">
-        <img src="images/TacticHub-Logo.png" width="100" height="20">
-      </a>
-      <span class="mb-3 mb-md-0 text-body-secondary">© 2024 Dongyang Mirae Univ, Computer Software Engineering, Team 5</span>
-    </div>
-
-    <ul class="nav col-md-4 justify-content-end list-unstyled d-flex">
-      <li class="ms-3"><a class="text-body-secondary" href="https://github.com/sim00507/tactic-hub" target="_blank"><img src="images/github-mark-white.png" width="25" height="25"></a></li>
-      <li class="ms-3"><a class="text-body-secondary" href="#"><svg class="bi" width="24" height="24"><use xlink:href="#instagram"></use></svg></a></li>
-      <li class="ms-3"><a class="text-body-secondary" href="#"><svg class="bi" width="24" height="24"><use xlink:href="#facebook"></use></svg></a></li>
-    </ul>
-  </footer>
-</div>
--->
 <%@ include file="footer.jsp"%>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
