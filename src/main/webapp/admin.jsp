@@ -122,7 +122,7 @@
         });
 
 
-        
+
         document.addEventListener("DOMContentLoaded", () => {
             const menuItems = document.querySelectorAll('.menu-item');
             const contentSections = document.querySelectorAll('.content-section');
@@ -160,7 +160,15 @@
             System.out.println("Current Section in JSP: " + currentSection);
         }
     %>
-
+    <%
+        // DAO를 통해 총 회원 수를 가져옴
+        int totalUsers = 0;
+        try {
+            totalUsers = userDAO.getTotalUserCount();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    %>
 </head>
 <body class="m-0 vh-100 d-flex">
 <div class="sidebar vh-100 d-flex flex-column justify-between">
@@ -191,14 +199,14 @@
 
 <div class="content">
     <!-- 대시보드 -->
-    <div id="dashboard" class="content-section active">
+    <div id="dashboard" class="content-section">
         <h4 class="mb-4">대시보드</h4>
         <div class="row">
             <div class="col-md-4">
                 <div class="card text-center">
                     <div class="card-body">
                         <h5 class="card-title">총 회원 수</h5>
-                        <p class="card-text fs-2">1,234</p>
+                        <p class="card-text fs-2"><%= totalUsers %></p>
                     </div>
                 </div>
             </div>

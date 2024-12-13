@@ -127,4 +127,18 @@ public class UserDAO {
         }
         return null; // 로그인 실패 시 null 반환
     }
+
+    public int getTotalUserCount() {
+        String sql = "SELECT COUNT(*) FROM users";
+        try (Connection conn = DatabaseConnection.getConnection();
+             Statement stmt = conn.createStatement();
+             ResultSet rs = stmt.executeQuery(sql)) {
+            if (rs.next()) {
+                return rs.getInt(1);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return 0; // 예외 발생 시 0 반환
+    }
 }
