@@ -11,7 +11,7 @@ import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
 
 public class RiotApiService {
-    private static final String API_KEY = "RGAPI-07c0585a-6f7c-4e85-b5b6-a2fc640a1dea";
+    private static final String API_KEY = "RGAPI-fb16e894-dae0-46cf-9fdb-9909c4e2d169";
 
     public static JSONObject getLeagueInfo(String gameName, String tagLine) throws Exception {
         // Step 1: PUUID 가져오기
@@ -19,6 +19,10 @@ public class RiotApiService {
         String encodedTagLine = URLEncoder.encode(tagLine, StandardCharsets.UTF_8);
         String accountApiUrl = "https://asia.api.riotgames.com/riot/account/v1/accounts/by-riot-id/"
                 + encodedGameName + "/" + encodedTagLine + "?api_key=" + API_KEY;
+
+        System.out.println("Encoded Game Name: " + encodedGameName);
+        System.out.println("Encoded Tag Line: " + encodedTagLine);
+
 
         JSONObject accountJson = (JSONObject) sendApiRequest(accountApiUrl);
         String puuid = accountJson.getString("puuid");
