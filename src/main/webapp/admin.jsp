@@ -3,7 +3,7 @@
 <%@ page import="com.example.tactichub.dto.UserDTO" %>
 <%@ page import="com.example.tactichub.dao.MatchHistoryDAO" %>
 <%@ page import="com.example.tactichub.dto.MatchHistoryDTO" %>
-<%@ page import="java.util.List" %>
+<%@ page import="java.util.*" %>
 <%
     // UserDAO를 사용하여 모든 회원 정보를 가져옴
     UserDAO userDAO = new UserDAO();
@@ -17,7 +17,7 @@
     }
 %>
 <%
-    // 검색 결과 저장 변수
+    // 검색용 변수 선언
     String searchUserId = request.getParameter("searchUserId");
     List<MatchHistoryDTO> matchHistoryList = null;
 
@@ -30,6 +30,7 @@
         }
     }
 %>
+
 
 <!DOCTYPE html>
 <html lang="ko">
@@ -119,24 +120,67 @@
             // 초기 로드 시 이벤트 리스너 연결
             attachEventListeners();
         });
-        <!-- 기존 -->
+
+
+        
+        document.addEventListener("DOMContentLoaded", () => {
+            const menuItems = document.querySelectorAll('.menu-item');
+            const contentSections = document.querySelectorAll('.content-section');
+
+            // JSP에서 currentSection 값 가져오기
+            const currentSection = "<%= request.getAttribute("currentSection") != null ? request.getAttribute("currentSection") : "dashboard" %>";
+            console.log("Current Section from JSP: ", currentSection);
+
+            // 현재 섹션 활성화
+            menuItems.forEach(item => {
+                const targetId = item.getAttribute('data-target');
+                if (targetId === currentSection) {
+                    item.classList.add('active');
+                } else {
+                    item.classList.remove('active');
+                }
+            });
+
+            contentSections.forEach(section => {
+                if (section.id === currentSection) {
+                    section.classList.add('active');
+                } else {
+                    section.classList.remove('active');
+                }
+            });
+        });
 
 
     </script>
+    <%
+        String currentSection = (String) request.getAttribute("currentSection");
+        if (currentSection == null) {
+            System.out.println("Current Section is null in JSP");
+        } else {
+            System.out.println("Current Section in JSP: " + currentSection);
+        }
+    %>
 
 </head>
 <body class="m-0 vh-100 d-flex">
 <div class="sidebar vh-100 d-flex flex-column justify-between">
     <div>
         <h4 class="fw-bold mb-4 mt-2">관리자 페이지</h4>
-        <a href="#" class="menu-item active" data-target="dashboard"><img src="images/dashboard.png" class="me-2 pb-1"
-                                                                          alt="dashboard" width="20px">대시보드</a>
-        <a href="#" class="menu-item" data-target="user-management"><img src="images/group-fill.png" class="me-2 pb-1"
-                                                                         alt="user-management" width="20px">회원 관리</a>
-        <a href="#" class="menu-item" data-target="history"><img src="images/bookmark.png" class="me-2 pb-1"
-                                                                 alt="history" width="20px">히스토리 조회</a>
-        <a href="#" class="menu-item" data-target="api-status"><img src="images/webhook.png" class="me-2 pb-1" alt="api-status" width="20px">API 연동 현황</a>
-        <a href="#" class="menu-item" data-target="site-settings"><img src="images/settings.png" class="me-2 pb-1" alt="settings" width="20px">사이트 설정</a>
+        <a href="#" class="menu-item <%= "dashboard".equals(request.getAttribute("currentSection")) ? "active" : "" %>" data-target="dashboard">
+            <img src="images/dashboard.png" class="me-2 pb-1" alt="dashboard" width="20px">대시보드
+        </a>
+        <a href="#" class="menu-item <%= "user-management".equals(request.getAttribute("currentSection")) ? "active" : "" %>" data-target="user-management">
+            <img src="images/group-fill.png" class="me-2 pb-1" alt="user-management" width="20px">회원 관리
+        </a>
+        <a href="#" class="menu-item <%= "history".equals(request.getAttribute("currentSection")) ? "active" : "" %>" data-target="history">
+            <img src="images/bookmark.png" class="me-2 pb-1" alt="history" width="20px">히스토리 조회
+        </a>
+        <a href="#" class="menu-item <%= "api-status".equals(request.getAttribute("currentSection")) ? "active" : "" %>" data-target="api-status">
+            <img src="images/webhook.png" class="me-2 pb-1" alt="api-status" width="20px">API 연동 현황
+        </a>
+        <a href="#" class="menu-item <%= "site-settings".equals(request.getAttribute("currentSection")) ? "active" : "" %>" data-target="site-settings">
+            <img src="images/settings.png" class="me-2 pb-1" alt="settings" width="20px">사이트 설정
+        </a>
         <a href="logout.jsp"><img src="images/logout.png" class="me-2 pb-1" alt="logout" width="20px">로그아웃</a>
     </div>
     <div class="mt-auto text-center mb-3">
@@ -258,15 +302,17 @@
 
 <div class="content">
     <!-- 히스토리 조회 -->
+
     <div id="history" class="content-section active">
         <h4 class="mb-4">히스토리 조회</h4>
         <div class="card mb-4">
-            <form method="get">
+            <form action="searchUserHistory" method="get">
                 <div class="input-group mb-3">
                     <input type="text" name="searchUserId" class="form-control" placeholder="회원 ID를 입력하세요" value="<%= searchUserId != null ? searchUserId : "" %>">
                     <button class="btn btn-primary" type="submit">검색</button>
                 </div>
             </form>
+
         </div>
 
         <% if (searchUserId != null && !searchUserId.isEmpty()) { %>
@@ -275,34 +321,66 @@
             <div class="table-responsive">
                 <table class="table table-striped">
                     <thead>
-                        <tr>
-                            <th>#</th>
-                            <th>팀 1</th>
-                            <th>팀 2</th>
-                            <th>저장 시각</th>
-                        </tr>
+                    <tr>
+                        <th>#</th>
+                        <th>팀1</th>
+                        <th>팀2</th>
+                        <th>저장 시각</th>
+                    </tr>
                     </thead>
                     <tbody>
-                        <% if (matchHistoryList != null && !matchHistoryList.isEmpty()) { %>
-                            <% int count = 1; %>
-                            <% for (MatchHistoryDTO history : matchHistoryList) { %>
-                            <tr>
-                                <td><%= count++ %></td>
-                                <td><%= history.getTeam1() %></td>
-                                <td><%= history.getTeam2() %></td>
-                                <td><%= history.getCreatedAt() %></td>
-                            </tr>
+                    <%
+                        if (matchHistoryList != null && !matchHistoryList.isEmpty()) {
+                            Map<String, Map<Integer, List<MatchHistoryDTO>>> groupedMatchHistories = new LinkedHashMap<>();
+
+                            // 데이터를 createdAt 기준으로 팀별로 그룹화
+                            for (MatchHistoryDTO history : matchHistoryList) {
+                                String createdAt = history.getCreatedAt();
+                                groupedMatchHistories.putIfAbsent(createdAt, new HashMap<>());
+                                groupedMatchHistories.get(createdAt).putIfAbsent(history.getTeam(), new ArrayList<>());
+                                groupedMatchHistories.get(createdAt).get(history.getTeam()).add(history);
+                            }
+
+                            int count = 1;
+                            for (Map.Entry<String, Map<Integer, List<MatchHistoryDTO>>> entry : groupedMatchHistories.entrySet()) {
+                                String createdAt = entry.getKey();
+                                Map<Integer, List<MatchHistoryDTO>> teams = entry.getValue();
+
+                                // 팀별 플레이어 정보
+                                List<MatchHistoryDTO> team1 = teams.getOrDefault(1, new ArrayList<>());
+                                List<MatchHistoryDTO> team2 = teams.getOrDefault(2, new ArrayList<>());
+
+                    %>
+                    <tr>
+                        <td><%= count++ %></td>
+                        <td>
+                            <% for (MatchHistoryDTO player : team1) { %>
+                            <div><%= player.getPlayerName() %> (<%= player.getPlayerRank() %>)</div>
                             <% } %>
-                        <% } else { %>
-                        <tr>
-                            <td colspan="4" class="text-center">검색 결과가 없습니다.</td>
-                        </tr>
-                        <% } %>
+                        </td>
+                        <td>
+                            <% for (MatchHistoryDTO player : team2) { %>
+                            <div><%= player.getPlayerName() %> (<%= player.getPlayerRank() %>)</div>
+                            <% } %>
+                        </td>
+                        <td><%= createdAt %></td>
+                    </tr>
+                    <%
+                        }
+                    } else {
+                    %>
+                    <tr>
+                        <td colspan="4" class="text-center">검색 결과가 없습니다.</td>
+                    </tr>
+                    <%
+                        }
+                    %>
                     </tbody>
                 </table>
             </div>
         </div>
         <% } %>
+
     </div>
 </div>
 

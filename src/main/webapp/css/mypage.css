@@ -177,7 +177,7 @@ body {
 }
 
 .table td {
-    background: rgba(255, 255, 255, 0.05);
+    background: rgba(0, 0, 0, 0.05);
     color: white;
     text-align: left;
     padding: 12px;
@@ -190,7 +190,7 @@ body {
 }
 
 .table tr:hover {
-    background: rgba(58, 140, 255, 0.2);
+    background: rgba(0, 0, 0, 0.2);
     transition: background 0.2s ease;
 }
 
