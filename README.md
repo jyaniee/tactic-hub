@@ -10,7 +10,7 @@
 ## 팀
 
 
-[@sim00507](https://github.com/sim00507) | 메인 프론트엔드  
+[@jyaniee](https://github.com/jyaniee) | 메인 프론트엔드  
 [@dulgix](https://github.com/dulgix) | 서브 프론트엔드, 서브 백엔드  
 [@hogyeom3527](https://github.com/hogyeom3527) | 메인 백엔드
 
